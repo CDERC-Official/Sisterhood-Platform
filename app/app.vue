@@ -1,5 +1,7 @@
 <script setup>
-useHead({
+const { localeProperties } = useI18n()
+
+useHead(() => ({
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
   ],
@@ -7,9 +9,9 @@ useHead({
     { rel: 'icon', href: '/favicon.ico' }
   ],
   htmlAttrs: {
-    lang: 'de'
+    lang: localeProperties.value.language
   }
-})
+}))
 
 const title = 'Sisterhood – Hier beginnt Verbindung'
 const description = 'Sisterhood verbindet Frauen aus Graz und Neuseeland. Eine Community für persönliche Geschichten, kreative Ideen und gegenseitige Unterstützung.'
