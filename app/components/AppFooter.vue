@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { layoutCopy } from '~/data/layout-copy'
+
+const { locale } = useI18n()
+const localePath = useLocalePath()
+const copy = computed(() => layoutCopy[locale.value === 'de' ? 'de' : 'en'])
+</script>
+
 <template>
   <UFooter
     class="border-t border-default bg-sage"
@@ -7,25 +15,24 @@
       <UContainer class="grid gap-8 py-12 md:grid-cols-2 md:gap-16">
         <div>
           <NuxtLink
-            to="/"
-            aria-label="Sisterhood – Startseite"
+            :to="localePath('/')"
+            :aria-label="copy.home"
             class="inline-flex rounded-md p-1 -ms-1"
           >
             <AppLogo />
           </NuxtLink>
 
           <p class="mt-4 max-w-reading text-base leading-relaxed text-graphite">
-            Ein Ort für Frauen, ihre Geschichten und das, was sie gemeinsam bewegen.
+            {{ copy.footerIntro }}
           </p>
         </div>
 
         <div class="md:justify-self-end">
           <h2 class="text-lg font-semibold text-forest">
-            Von Graz bis Neuseeland
+            {{ copy.footerTitle }}
           </h2>
           <p class="mt-3 max-w-sm text-sm leading-relaxed text-graphite">
-            Hier beginnt unsere Idee: Erfahrungen teilen, Verbindungen schaffen
-            und einander über Grenzen hinweg unterstützen.
+            {{ copy.footerText }}
           </p>
         </div>
       </UContainer>
@@ -39,7 +46,7 @@
 
     <template #right>
       <p class="text-sm text-graphite">
-        Prototyp zur Präsentation. Inhalte und Funktionen im Aufbau.
+        {{ copy.demo }}
       </p>
     </template>
   </UFooter>
