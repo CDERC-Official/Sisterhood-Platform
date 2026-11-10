@@ -13,7 +13,9 @@ export default defineNuxtConfig({
 
   // The first prototype uses the approved light palette only.
   ui: {
-    colorMode: false
+    colorMode: false,
+    // Font files are self-hosted and declared explicitly in main.css.
+    fonts: false
   },
 
   routeRules: {
