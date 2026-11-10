@@ -1,0 +1,11 @@
+{
+  "actions": {
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen"
+  },
+  "empty": {
+    "title": "Noch nichts vorhanden",
+    "description": "Hier gibt es noch nichts zu sehen."
+  }
+}
