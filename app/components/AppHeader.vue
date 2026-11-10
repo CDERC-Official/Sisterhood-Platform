@@ -9,19 +9,16 @@ const open = ref(false)
 const { locale } = useI18n()
 const copy = computed(() => layoutCopy[locale.value === 'de' ? 'de' : 'en'])
 
-const items = computed<NavigationMenuItem[]>(() => primaryNavigation.map((item) => {
-  const to = item.available ? localePath(item.path) : undefined
-  return {
-    label: item.available ? item.label : `${item.label} (bald)`,
-    to,
-    disabled: !item.available,
-    exact: item.path === '/',
-    active: Boolean(to && (item.path === '/'
-      ? route.path === to
-      : route.path === to || route.path.startsWith(`${to}/`))),
-    onSelect: () => { open.value = false }
-  }
-}))
+const items = computed<NavigationMenuItem[]>(() => primaryNavigation.map(item => ({
+  label: `${copy.value.links[item.path as keyof typeof copy.value.links]}${item.available ? '' : ` (${copy.value.soon})`}`,
+  to: item.available ? localePath(item.path) : undefined,
+  disabled: !item.available,
+  exact: item.path === '/',
+  active: item.available && (item.path === '/'
+    ? route.path === localePath('/')
+    : route.path === localePath(item.path) || route.path.startsWith(`${localePath(item.path)}/`)),
+  onSelect: () => { open.value = false }
+})))
 </script>
 
 <template>
