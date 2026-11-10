@@ -7,5 +7,29 @@
   "empty": {
     "title": "Nothing here yet",
     "description": "There is nothing to show."
+  },
+  "auth": {
+    "title": "Account",
+    "lead": "Create a demo account in this browser, or sign in with one that is already here.",
+    "join": "Join",
+    "login": "Log in",
+    "logout": "Log out",
+    "email": "Email",
+    "password": "Password",
+    "displayName": "Display name",
+    "attest": "I am joining as myself.",
+    "maker": "I am a maker",
+    "joinSubmit": "Create account",
+    "loginSubmit": "Log in",
+    "signedIn": "You are signed in as {name}.",
+    "demoHint": "Demo accounts: amara{'@'}sisterhood.test and lena{'@'}sisterhood.test. Password: sisterhood.",
+    "errors": {
+      "email": "Enter an email address.",
+      "password": "Enter a password.",
+      "displayName": "Enter a display name.",
+      "duplicateEmail": "An account with this email already exists. Log in instead.",
+      "invalidAccount": "Email, password, and display name are required.",
+      "invalidCredentials": "That email and password do not match."
+    }
   }
 }

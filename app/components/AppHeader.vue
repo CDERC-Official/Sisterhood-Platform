@@ -3,18 +3,22 @@ import type { NavigationMenuItem } from '@nuxt/ui'
 import { primaryNavigation } from '~/data/navigation'
 
 const route = useRoute()
+const localePath = useLocalePath()
 const open = ref(false)
 
-const items = computed<NavigationMenuItem[]>(() => primaryNavigation.map(item => ({
-  label: item.available ? item.label : `${item.label} (bald)`,
-  to: item.available ? item.path : undefined,
-  disabled: !item.available,
-  exact: item.path === '/',
-  active: item.available && (item.path === '/'
-    ? route.path === '/'
-    : route.path === item.path || route.path.startsWith(`${item.path}/`)),
-  onSelect: () => { open.value = false }
-})))
+const items = computed<NavigationMenuItem[]>(() => primaryNavigation.map((item) => {
+  const to = item.available ? localePath(item.path) : undefined
+  return {
+    label: item.available ? item.label : `${item.label} (bald)`,
+    to,
+    disabled: !item.available,
+    exact: item.path === '/',
+    active: Boolean(to && (item.path === '/'
+      ? route.path === to
+      : route.path === to || route.path.startsWith(`${to}/`))),
+    onSelect: () => { open.value = false }
+  }
+}))
 </script>
 
 <template>
