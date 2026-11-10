@@ -8,12 +8,12 @@ const projectOwner = 'CDERC-Official'
 const projectNumber = '5'
 
 const labelColors = {
-  story: '1D76DB',
+  'story': '1D76DB',
   'mock-data': '5319E7',
-  account: '0E8A16',
-  products: 'FBCA04',
-  inquiries: 'D93F0B',
-  community: '0052CC'
+  'account': '0E8A16',
+  'products': 'FBCA04',
+  'inquiries': 'D93F0B',
+  'community': '0052CC'
 }
 
 const text = readFileSync(storiesPath, 'utf8')
