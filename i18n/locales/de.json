@@ -7,5 +7,29 @@
   "empty": {
     "title": "Noch nichts vorhanden",
     "description": "Hier gibt es noch nichts zu sehen."
+  },
+  "auth": {
+    "title": "Konto",
+    "lead": "Lege ein Demokonto in diesem Browser an, oder melde dich mit einem Konto an, das schon hier liegt.",
+    "join": "Beitreten",
+    "login": "Anmelden",
+    "logout": "Abmelden",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "displayName": "Anzeigename",
+    "attest": "Ich trete als ich selbst bei.",
+    "maker": "Ich bin eine Makerin",
+    "joinSubmit": "Konto anlegen",
+    "loginSubmit": "Anmelden",
+    "signedIn": "Du bist als {name} angemeldet.",
+    "demoHint": "Demokonten: amara{'@'}sisterhood.test und lena{'@'}sisterhood.test. Passwort: sisterhood.",
+    "errors": {
+      "email": "Gib eine E-Mail-Adresse ein.",
+      "password": "Gib ein Passwort ein.",
+      "displayName": "Gib einen Anzeigenamen ein.",
+      "duplicateEmail": "Für diese E-Mail gibt es schon ein Konto. Melde dich an.",
+      "invalidAccount": "E-Mail, Passwort und Anzeigename werden gebraucht.",
+      "invalidCredentials": "E-Mail oder Passwort stimmt nicht."
+    }
   }
 }
