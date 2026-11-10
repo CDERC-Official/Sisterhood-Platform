@@ -1,9 +1,16 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/manrope/manrope-latin-variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+}
+
 @theme static {
-  /* Keep the current font until the separately approved Manrope step. */
-  --font-sans: 'Public Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
 
   --color-sisterhood-50: #f2f6f3;
   --color-sisterhood-100: #dce5da;
