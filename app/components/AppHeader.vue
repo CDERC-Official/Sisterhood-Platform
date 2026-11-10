@@ -7,7 +7,6 @@ const route = useRoute()
 const localePath = useLocalePath()
 const open = ref(false)
 const { locale } = useI18n()
-const localePath = useLocalePath()
 const copy = computed(() => layoutCopy[locale.value === 'de' ? 'de' : 'en'])
 
 const items = computed<NavigationMenuItem[]>(() => primaryNavigation.map((item) => {
