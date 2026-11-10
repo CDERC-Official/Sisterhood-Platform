@@ -11,6 +11,11 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  // The first prototype uses the approved light palette only.
+  ui: {
+    colorMode: false
+  },
+
   routeRules: {
     '/': { prerender: true }
   },
