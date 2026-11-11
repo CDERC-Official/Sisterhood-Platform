@@ -18,7 +18,8 @@ type LoginState = {
 }
 
 const { t } = useI18n()
-const { user, register, login, logout } = useAuth()
+const route = useRoute()
+const { user, register, login } = useAuth()
 
 useHead({
   title: () => t('auth.title')
@@ -27,6 +28,15 @@ useHead({
 const mode = ref<'join' | 'login'>('join')
 const joinAlert = ref('')
 const loginAlert = ref('')
+
+function leaveAuth() {
+  return navigateAfterAuth(route.query.returnTo)
+}
+
+// Signed-in visitors (including post-join/login) leave for returnTo or /account.
+watch(user, (value) => {
+  if (value) leaveAuth()
+}, { immediate: true })
 
 const joinState = reactive<JoinState>({
   email: '',
@@ -140,26 +150,7 @@ watch(() => [loginState.email, loginState.password], () => {
         </p>
       </header>
 
-      <section
-        v-if="user"
-        class="flex flex-col items-start gap-4"
-        :aria-label="t('auth.logout')"
-      >
-        <p>{{ t('auth.signedIn', { name: user.displayName }) }}</p>
-        <p class="text-muted">
-          {{ user.email }}
-        </p>
-        <UButton
-          color="neutral"
-          variant="outline"
-          @click="logout"
-        >
-          {{ t('auth.logout') }}
-        </UButton>
-      </section>
-
       <UTabs
-        v-else
         v-model="mode"
         :items="tabs"
         :unmount-on-hide="false"
