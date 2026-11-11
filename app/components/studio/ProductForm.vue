@@ -30,7 +30,8 @@ type FormState = {
   descriptionEn: string
   descriptionDe: string
   category: ProductCategory | undefined
-  amount: string
+  // UInput type="number" can bind a number at runtime
+  amount: string | number
   currency: Currency | undefined
   imageUrls: string[]
 }
@@ -94,7 +95,7 @@ watch(locale, (value) => {
 watch(
   () => state.amount,
   (amount) => {
-    if (!amount.trim()) {
+    if (!String(amount ?? '').trim()) {
       state.currency = undefined
     }
   }
@@ -177,7 +178,7 @@ function validateForm(form: Partial<FormState>): FieldError[] {
     }
   }
 
-  const amountRaw = form.amount?.trim() ?? ''
+  const amountRaw = String(form.amount ?? '').trim()
   const hasAmount = amountRaw !== ''
   const hasCurrency = Boolean(form.currency)
 
@@ -205,7 +206,7 @@ function onSubmit() {
 
   if (!state.category || imageUrls.length === 0) return
 
-  const amountRaw = state.amount.trim()
+  const amountRaw = String(state.amount ?? '').trim()
   const values: ProductFormValues = {
     title: {
       en: state.titleEn.trim(),
