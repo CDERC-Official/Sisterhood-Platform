@@ -64,5 +64,77 @@
       "portrait": "Enter a full http or https URL, or leave this blank.",
       "saveFailed": "The profile could not be saved."
     }
+  },
+  "products": {
+    "title": "Products",
+    "lead": "Browse listings from makers in the demo store.",
+    "search": "Search",
+    "searchPlaceholder": "Search by title or maker",
+    "categories": "Categories",
+    "maker": "Maker",
+    "country": "Maker country",
+    "all": "All",
+    "empty": "No products match your search.",
+    "notFound": "Product not found",
+    "notFoundDescription": "This listing is not in the catalog.",
+    "back": "Back to products",
+    "inquire": "Inquire",
+    "gallery": "Product images",
+    "image": "Image {n}",
+    "category": {
+      "Ceramics": "Ceramics",
+      "Textiles": "Textiles",
+      "Jewelry": "Jewelry",
+      "Wood": "Wood",
+      "Print & Paper": "Print & Paper",
+      "Food & Preserve": "Food & Preserve",
+      "Fiber & Basketry": "Fiber & Basketry",
+      "Care & Beauty": "Care & Beauty"
+    }
+  },
+  "studio": {
+    "title": "Studio",
+    "lead": "Create and manage your product listings for this demo.",
+    "empty": "You have not listed any products yet.",
+    "create": "Add product",
+    "edit": "Edit",
+    "view": "View",
+    "newTitle": "New product",
+    "editTitle": "Edit product",
+    "formLead": "Titles and descriptions can be filled in English and German. The active language title is required.",
+    "notFound": "Product not found",
+    "notFoundDescription": "This listing is not in your studio.",
+    "back": "Back to studio",
+    "deleteTitle": "Delete this product?",
+    "deleteDescription": "This removes the listing from the marketplace. Inquiry threads stay.",
+    "deleteConfirm": "Delete product",
+    "fields": {
+      "title": "Title and description",
+      "english": "English",
+      "german": "German",
+      "titleEn": "Title (English)",
+      "titleDe": "Title (German)",
+      "descriptionEn": "Description (English)",
+      "descriptionDe": "Description (German)",
+      "category": "Category",
+      "categoryPlaceholder": "Choose a category",
+      "amount": "Price amount",
+      "amountHelp": "Optional. Leave blank for no price.",
+      "currency": "Currency",
+      "currencyPlaceholder": "Choose a currency",
+      "images": "Images",
+      "imagesHelp": "Add one or more http or https image links.",
+      "imageUrl": "https://…",
+      "addImage": "Add image URL",
+      "removeImage": "Remove image URL"
+    },
+    "errors": {
+      "title": "Enter a title in the active language.",
+      "category": "Choose a category.",
+      "images": "Add at least one image URL.",
+      "imageUrl": "Enter a full http or https URL.",
+      "amount": "Enter a positive amount.",
+      "priceIncomplete": "Set both a price amount and a currency, or leave both blank."
+    }
   }
 }

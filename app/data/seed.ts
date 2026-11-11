@@ -183,7 +183,10 @@ export const products: Product[] = [
     },
     category: 'Textiles',
     price: { amount: 4800, currency: 'KES' },
-    imageUrls: [unsplash('1558171813-4c088753af8f')],
+    imageUrls: [
+      unsplash('1558171813-4c088753af8f'),
+      unsplash('1528459801416-a9e53bbf4e17')
+    ],
     createdAt: '2026-06-02T08:00:00.000Z'
   },
   {
