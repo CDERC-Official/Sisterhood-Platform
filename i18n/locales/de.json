@@ -131,6 +131,20 @@
       "Care & Beauty": "Pflege & Schönheit"
     }
   },
+  "community": {
+    "title": "Community",
+    "lead": "Lies Beiträge von Makerinnen und Unterstützerinnen im Demo-Feed.",
+    "filters": "Tags",
+    "all": "Alle",
+    "empty": "Keine Beiträge passen zu diesem Filter.",
+    "replies": "Antworten",
+    "tag": {
+      "Skills": "Fertigkeiten",
+      "Opportunities": "Gelegenheiten",
+      "Stories": "Geschichten",
+      "Questions": "Fragen"
+    }
+  },
   "studio": {
     "title": "Studio",
     "lead": "Lege deine Produktangebote für diese Demo an und verwalte sie.",

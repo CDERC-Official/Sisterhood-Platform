@@ -131,6 +131,20 @@
       "Care & Beauty": "Care & Beauty"
     }
   },
+  "community": {
+    "title": "Community",
+    "lead": "Read posts from makers and supporters in the demo feed.",
+    "filters": "Tags",
+    "all": "All",
+    "empty": "No posts match this filter.",
+    "replies": "Replies",
+    "tag": {
+      "Skills": "Skills",
+      "Opportunities": "Opportunities",
+      "Stories": "Stories",
+      "Questions": "Questions"
+    }
+  },
   "studio": {
     "title": "Studio",
     "lead": "Create and manage your product listings for this demo.",
