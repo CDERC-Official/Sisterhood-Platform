@@ -1,15 +1,19 @@
 import { describe, expect, it } from 'vitest'
 import { communityTags } from '#shared/types'
 import type { CommunityPost } from '#shared/types'
-import { createSeedState } from '../data/mock-store'
+import { createCommunityPost, createSeedState } from '../data/mock-store'
+import { demoMakerEmail } from '../data/seed'
 import { displayNameFor } from './inquiries'
 import {
+  communityReturnPath,
   communityTagSlug,
   filterCommunityPostsByTag,
   formatCommunityTime,
+  hasCommunityPostFormErrors,
   parseCommunityTagQuery,
   seededTagsPresent,
-  sortCommunityPostsNewestFirst
+  sortCommunityPostsNewestFirst,
+  validateCommunityPostForm
 } from './community'
 
 function post(partial: Partial<CommunityPost> & Pick<CommunityPost, 'id' | 'createdAt' | 'tag'>): CommunityPost {
@@ -98,5 +102,50 @@ describe('community helpers', () => {
   it('formats community times', () => {
     expect(formatCommunityTime('2026-11-06T09:10:00.000Z', 'en')).toMatch(/\d/)
     expect(formatCommunityTime('not-a-date', 'en')).toBe('')
+  })
+
+  it('validates the compose form and builds return paths', () => {
+    expect(validateCommunityPostForm({ tag: '', title: '', body: '' })).toEqual({
+      tag: 'required',
+      title: 'required',
+      body: 'required'
+    })
+    expect(hasCommunityPostFormErrors(
+      validateCommunityPostForm({ tag: '', title: '', body: '' })
+    )).toBe(true)
+    expect(validateCommunityPostForm({
+      tag: 'Stories',
+      title: '  Hello  ',
+      body: '  World  '
+    })).toEqual({})
+    expect(hasCommunityPostFormErrors(
+      validateCommunityPostForm({ tag: 'Stories', title: 'Hello', body: 'World' })
+    )).toBe(false)
+    expect(communityReturnPath('all')).toBe('/community')
+    expect(communityReturnPath('Stories')).toBe('/community?tag=stories')
+  })
+
+  it('prepends a published post and keeps it under its tag filter', () => {
+    const state = createSeedState()
+    const author = state.users.find(user => user.email === demoMakerEmail)
+    if (!author) throw new Error('Seed is missing the demo maker')
+
+    const created = createCommunityPost(state, {
+      authorUserId: author.id,
+      tag: 'Stories',
+      title: 'A fresh story',
+      body: 'Written for the feed.'
+    })
+    const post = created.result
+    if (!post) throw new Error('Post was not created')
+
+    expect(created.state.communityPosts[0]?.id).toBe(post.id)
+    expect(filterCommunityPostsByTag(created.state.communityPosts, 'all')[0]?.id).toBe(post.id)
+    expect(
+      filterCommunityPostsByTag(created.state.communityPosts, 'Stories').some(item => item.id === post.id)
+    ).toBe(true)
+    expect(
+      filterCommunityPostsByTag(created.state.communityPosts, 'Skills').some(item => item.id === post.id)
+    ).toBe(false)
   })
 })

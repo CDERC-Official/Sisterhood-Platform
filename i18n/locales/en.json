@@ -138,6 +138,22 @@
     "all": "All",
     "empty": "No posts match this filter.",
     "replies": "Replies",
+    "composeTitle": "Share with the community",
+    "composeLead": "Pick a tag, then write a short title and body.",
+    "fields": {
+      "tag": "Tag",
+      "tagPlaceholder": "Choose a tag",
+      "title": "Title",
+      "titlePlaceholder": "What is this about?",
+      "body": "Body",
+      "bodyPlaceholder": "Share a skill, opportunity, story, or question."
+    },
+    "publish": "Publish",
+    "errors": {
+      "tag": "Choose a tag.",
+      "title": "Enter a title.",
+      "body": "Enter a body."
+    },
     "tag": {
       "Skills": "Skills",
       "Opportunities": "Opportunities",

@@ -47,3 +47,38 @@ export function formatCommunityTime(iso: string, locale: string): string {
 export function seededTagsPresent(posts: CommunityPost[]): boolean {
   return communityTags.every(tag => posts.some(post => post.tag === tag))
 }
+
+export type CommunityPostFormInput = {
+  tag: CommunityTag | ''
+  title: string
+  body: string
+}
+
+export type CommunityPostFormErrors = {
+  tag?: 'required'
+  title?: 'required'
+  body?: 'required'
+}
+
+/** Validate a compose draft. Empty fields return field-level required errors. */
+export function validateCommunityPostForm(
+  input: CommunityPostFormInput
+): CommunityPostFormErrors {
+  const errors: CommunityPostFormErrors = {}
+  if (!input.tag || !(communityTags as readonly string[]).includes(input.tag)) {
+    errors.tag = 'required'
+  }
+  if (!input.title.trim()) errors.title = 'required'
+  if (!input.body.trim()) errors.body = 'required'
+  return errors
+}
+
+export function hasCommunityPostFormErrors(errors: CommunityPostFormErrors): boolean {
+  return !!(errors.tag || errors.title || errors.body)
+}
+
+/** Path (+ query) to send guests back to after auth, including the active tag. */
+export function communityReturnPath(tag: CommunityTagFilter): string {
+  if (tag === 'all') return '/community'
+  return `/community?tag=${communityTagSlug(tag)}`
+}
