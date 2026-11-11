@@ -79,6 +79,13 @@
     "notFoundDescription": "This listing is not in the catalog.",
     "back": "Back to products",
     "inquire": "Inquire",
+    "inquireTitle": "Ask the maker",
+    "inquireDescription": "Send a short private message about this product.",
+    "inquireMessage": "Message",
+    "inquireMessagePlaceholder": "What would you like to ask?",
+    "inquireSend": "Send inquiry",
+    "inquireRequired": "Enter a message before sending.",
+    "inquireOwn": "You cannot inquire on your own product.",
     "gallery": "Product images",
     "image": "Image {n}",
     "category": {

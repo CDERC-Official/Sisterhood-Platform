@@ -372,6 +372,62 @@ describe('inquiries', () => {
     expect(blank).toEqual({ state, result: null })
     expect(missing).toEqual({ state, result: null })
   })
+
+  it('allows two inquiries from the same person on the same product', () => {
+    const state = createSeedState()
+    const maker = state.users.find(user => user.email === demoMakerEmail)
+    const supporter = state.users.find(user => user.email === demoSupporterEmail)
+    if (!maker || !supporter) throw new Error('Seed is missing demo accounts')
+
+    const first = createInquiry(state, {
+      productId: 'prd_amara_brass_collar',
+      makerUserId: maker.id,
+      inquirerUserId: supporter.id,
+      body: 'First question'
+    })
+    const second = createInquiry(first.state, {
+      productId: 'prd_amara_brass_collar',
+      makerUserId: maker.id,
+      inquirerUserId: supporter.id,
+      body: 'Second question'
+    })
+
+    expect(first.result?.id).not.toBe(second.result?.id)
+    expect(second.state.inquiries.filter(inquiry =>
+      inquiry.productId === 'prd_amara_brass_collar'
+      && inquiry.inquirerUserId === supporter.id
+    ).length).toBeGreaterThanOrEqual(2)
+  })
+
+  it('keeps a new inquiry after writing the store snapshot', () => {
+    const storage = memoryStorage()
+    vi.stubGlobal('localStorage', storage)
+
+    const state = createSeedState()
+    const maker = state.users.find(user => user.email === demoMakerEmail)
+    const supporter = state.users.find(user => user.email === demoSupporterEmail)
+    if (!maker || !supporter) throw new Error('Seed is missing demo accounts')
+
+    const created = createInquiry(state, {
+      productId: 'prd_amara_brass_collar',
+      makerUserId: maker.id,
+      inquirerUserId: supporter.id,
+      body: 'Saved after refresh'
+    })
+    const inquiry = created.result
+    if (!inquiry) throw new Error('Inquiry was not created')
+
+    writeStoredState(created.state)
+    const restored = readStoredState()
+
+    expect(restored?.inquiries.some(item =>
+      item.id === inquiry.id
+      && item.messages[0]?.body === 'Saved after refresh'
+    )).toBe(true)
+
+    clearStoredState()
+    vi.unstubAllGlobals()
+  })
 })
 
 describe('community', () => {

@@ -79,6 +79,13 @@
     "notFoundDescription": "Dieses Angebot ist nicht im Katalog.",
     "back": "Zurück zu den Produkten",
     "inquire": "Anfragen",
+    "inquireTitle": "Makerin fragen",
+    "inquireDescription": "Sende eine kurze private Nachricht zu diesem Produkt.",
+    "inquireMessage": "Nachricht",
+    "inquireMessagePlaceholder": "Was möchtest du fragen?",
+    "inquireSend": "Anfrage senden",
+    "inquireRequired": "Gib eine Nachricht ein, bevor du sendest.",
+    "inquireOwn": "Du kannst dein eigenes Produkt nicht anfragen.",
     "gallery": "Produktbilder",
     "image": "Bild {n}",
     "category": {
