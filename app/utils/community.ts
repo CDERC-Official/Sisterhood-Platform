@@ -3,7 +3,7 @@
  * Pages own locale copy; this module only shapes store data and the tag query.
  */
 import { communityTags } from '#shared/types'
-import type { CommunityPost, CommunityTag } from '#shared/types'
+import type { CommunityPost, CommunityReply, CommunityTag } from '#shared/types'
 
 export type CommunityTagFilter = CommunityTag | 'all'
 
@@ -81,4 +81,24 @@ export function hasCommunityPostFormErrors(errors: CommunityPostFormErrors): boo
 export function communityReturnPath(tag: CommunityTagFilter): string {
   if (tag === 'all') return '/community'
   return `/community?tag=${communityTagSlug(tag)}`
+}
+
+export type CommunityReplyFormErrors = {
+  body?: 'required'
+}
+
+export function validateCommunityReplyForm(body: string): CommunityReplyFormErrors {
+  if (!body.trim()) return { body: 'required' }
+  return {}
+}
+
+export function canDeleteCommunityPost(post: CommunityPost, userId: string | null | undefined): boolean {
+  return !!userId && post.authorUserId === userId
+}
+
+export function canDeleteCommunityReply(
+  reply: CommunityReply,
+  userId: string | null | undefined
+): boolean {
+  return !!userId && reply.authorUserId === userId
 }

@@ -149,6 +149,16 @@
       "bodyPlaceholder": "Teile eine Fertigkeit, Gelegenheit, Geschichte oder Frage."
     },
     "publish": "Veröffentlichen",
+    "reply": "Antwort",
+    "replyPlaceholder": "Schreibe eine Antwort",
+    "sendReply": "Antwort senden",
+    "replyRequired": "Gib eine Antwort ein, bevor du sendest.",
+    "deletePostTitle": "Diesen Beitrag löschen?",
+    "deletePostDescription": "Damit verschwinden der Beitrag und alle Antworten darunter.",
+    "deletePostConfirm": "Beitrag löschen",
+    "deleteReplyTitle": "Diese Antwort löschen?",
+    "deleteReplyDescription": "Damit verschwindet nur deine Antwort. Der Beitrag bleibt.",
+    "deleteReplyConfirm": "Antwort löschen",
     "errors": {
       "tag": "Wähle einen Tag.",
       "title": "Gib einen Titel ein.",

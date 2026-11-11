@@ -1,10 +1,18 @@
 import { describe, expect, it } from 'vitest'
 import { communityTags } from '#shared/types'
 import type { CommunityPost } from '#shared/types'
-import { createCommunityPost, createSeedState } from '../data/mock-store'
-import { demoMakerEmail } from '../data/seed'
+import {
+  appendCommunityReply,
+  createCommunityPost,
+  createSeedState,
+  deleteOwnPost,
+  deleteOwnReply
+} from '../data/mock-store'
+import { demoMakerEmail, demoSupporterEmail } from '../data/seed'
 import { displayNameFor } from './inquiries'
 import {
+  canDeleteCommunityPost,
+  canDeleteCommunityReply,
   communityReturnPath,
   communityTagSlug,
   filterCommunityPostsByTag,
@@ -13,7 +21,8 @@ import {
   parseCommunityTagQuery,
   seededTagsPresent,
   sortCommunityPostsNewestFirst,
-  validateCommunityPostForm
+  validateCommunityPostForm,
+  validateCommunityReplyForm
 } from './community'
 
 function post(partial: Partial<CommunityPost> & Pick<CommunityPost, 'id' | 'createdAt' | 'tag'>): CommunityPost {
@@ -147,5 +156,56 @@ describe('community helpers', () => {
     expect(
       filterCommunityPostsByTag(created.state.communityPosts, 'Skills').some(item => item.id === post.id)
     ).toBe(false)
+  })
+
+  it('validates replies and gates delete to the author only', () => {
+    const state = createSeedState()
+    const amara = state.users.find(user => user.email === demoMakerEmail)
+    const lena = state.users.find(user => user.email === demoSupporterEmail)
+    const indigo = state.communityPosts.find(item => item.id === 'post_indigo_vat')
+    const reply = indigo?.replies[0]
+    if (!amara || !lena || !indigo || !reply) throw new Error('Seed is missing indigo post data')
+
+    expect(validateCommunityReplyForm('')).toEqual({ body: 'required' })
+    expect(validateCommunityReplyForm('  ')).toEqual({ body: 'required' })
+    expect(validateCommunityReplyForm('A tip')).toEqual({})
+
+    expect(canDeleteCommunityPost(indigo, amara.id)).toBe(true)
+    expect(canDeleteCommunityPost(indigo, lena.id)).toBe(false)
+    expect(canDeleteCommunityPost(indigo, null)).toBe(false)
+    expect(canDeleteCommunityReply(reply, reply.authorUserId)).toBe(true)
+    expect(canDeleteCommunityReply(reply, amara.id)).toBe(false)
+
+    const replied = appendCommunityReply(state, indigo.id, {
+      authorUserId: lena.id,
+      body: 'Thanks for sharing.'
+    })
+    const nextReply = replied.result
+    if (!nextReply) throw new Error('Reply was not created')
+
+    expect(
+      replied.state.communityPosts.find(item => item.id === indigo.id)?.replies.some(
+        item => item.id === nextReply.id
+      )
+    ).toBe(true)
+
+    const removedReply = deleteOwnReply(replied.state, indigo.id, nextReply.id, lena.id)
+    expect(removedReply.result).toBe(true)
+    expect(
+      removedReply.state.communityPosts.find(item => item.id === indigo.id)?.replies.some(
+        item => item.id === nextReply.id
+      )
+    ).toBe(false)
+    expect(
+      removedReply.state.communityPosts.find(item => item.id === indigo.id)?.replies.some(
+        item => item.id === reply.id
+      )
+    ).toBe(true)
+
+    const denied = deleteOwnPost(state, indigo.id, lena.id)
+    const removedPost = deleteOwnPost(state, indigo.id, amara.id)
+    expect(denied.result).toBe(false)
+    expect(removedPost.result).toBe(true)
+    expect(removedPost.state.communityPosts.some(item => item.id === indigo.id)).toBe(false)
   })
 })

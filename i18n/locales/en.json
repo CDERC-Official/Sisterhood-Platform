@@ -149,6 +149,16 @@
       "bodyPlaceholder": "Share a skill, opportunity, story, or question."
     },
     "publish": "Publish",
+    "reply": "Reply",
+    "replyPlaceholder": "Write a reply",
+    "sendReply": "Send reply",
+    "replyRequired": "Enter a reply before sending.",
+    "deletePostTitle": "Delete this post?",
+    "deletePostDescription": "This removes the post and every reply under it.",
+    "deletePostConfirm": "Delete post",
+    "deleteReplyTitle": "Delete this reply?",
+    "deleteReplyDescription": "This removes only your reply. The post stays.",
+    "deleteReplyConfirm": "Delete reply",
     "errors": {
       "tag": "Choose a tag.",
       "title": "Enter a title.",

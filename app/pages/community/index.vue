@@ -2,12 +2,10 @@
 import { communityTags } from '#shared/types'
 import type { CommunityTag } from '#shared/types'
 import { redirectToAuth } from '~/utils/auth-redirect'
-import { displayNameFor } from '~/utils/inquiries'
 import {
   communityReturnPath,
   communityTagSlug,
   filterCommunityPostsByTag,
-  formatCommunityTime,
   hasCommunityPostFormErrors,
   parseCommunityTagQuery,
   validateCommunityPostForm,
@@ -20,7 +18,7 @@ const router = useRouter()
 const { t, locale } = useI18n()
 const { user } = useAuth()
 const { state } = useMockStore()
-const { posts, createPost } = useCommunity()
+const { posts, createPost, appendReply, deleteOwnPost, deleteOwnReply } = useCommunity()
 
 useHead({
   title: () => t('community.title')
@@ -58,14 +56,6 @@ function selectTag(tag: CommunityTagFilter) {
     path: route.path,
     query
   })
-}
-
-function authorName(userId: string) {
-  return displayNameFor(state.value.users, userId)
-}
-
-function formatTime(iso: string) {
-  return formatCommunityTime(iso, locale.value)
 }
 
 function requireAuth() {
@@ -118,6 +108,24 @@ function publishPost() {
 function fieldError(key: keyof CommunityPostFormErrors) {
   const code = formErrors.value[key]
   return code ? t(`community.errors.${key}`) : undefined
+}
+
+function onReply(postId: string, body: string) {
+  if (!user.value) return
+  appendReply(postId, {
+    authorUserId: user.value.id,
+    body
+  })
+}
+
+function onDeletePost(postId: string) {
+  if (!user.value) return
+  deleteOwnPost(postId, user.value.id)
+}
+
+function onDeleteReply(postId: string, replyId: string) {
+  if (!user.value) return
+  deleteOwnReply(postId, replyId, user.value.id)
 }
 </script>
 
@@ -237,56 +245,18 @@ function fieldError(key: keyof CommunityPostFormErrors) {
         v-else
         class="flex flex-col gap-6"
       >
-        <article
+        <CommunityPostCard
           v-for="post in filteredPosts"
           :key="post.id"
-          class="flex flex-col gap-4 border-b border-default pb-6 last:border-b-0 last:pb-0"
-        >
-          <div class="flex flex-col gap-3">
-            <div class="flex flex-wrap items-center gap-2">
-              <UBadge
-                :label="tagLabel(post.tag)"
-                color="neutral"
-                variant="subtle"
-              />
-              <p class="text-sm text-muted">
-                {{ authorName(post.authorUserId) }}
-                ·
-                {{ formatTime(post.createdAt) }}
-              </p>
-            </div>
-
-            <h2 class="text-lg font-semibold text-highlighted">
-              {{ post.title }}
-            </h2>
-            <p class="whitespace-pre-wrap text-default">
-              {{ post.body }}
-            </p>
-          </div>
-
-          <div
-            v-if="post.replies.length > 0"
-            class="flex flex-col gap-3 border-s-2 border-default ps-4"
-          >
-            <p class="text-sm font-medium text-muted">
-              {{ t('community.replies') }}
-            </p>
-            <div
-              v-for="reply in post.replies"
-              :key="reply.id"
-              class="flex flex-col gap-1"
-            >
-              <p class="text-sm text-muted">
-                {{ authorName(reply.authorUserId) }}
-                ·
-                {{ formatTime(reply.createdAt) }}
-              </p>
-              <p class="whitespace-pre-wrap text-default">
-                {{ reply.body }}
-              </p>
-            </div>
-          </div>
-        </article>
+          :post="post"
+          :users="state.users"
+          :current-user-id="user?.id ?? null"
+          :locale-code="locale"
+          @reply="(body) => onReply(post.id, body)"
+          @delete-post="onDeletePost(post.id)"
+          @delete-reply="(replyId) => onDeleteReply(post.id, replyId)"
+          @require-auth="requireAuth"
+        />
       </div>
     </div>
   </UContainer>
