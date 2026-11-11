@@ -31,5 +31,26 @@
       "invalidAccount": "E-Mail, Passwort und Anzeigename werden gebraucht.",
       "invalidCredentials": "E-Mail oder Passwort stimmt nicht."
     }
+  },
+  "account": {
+    "title": "Profil",
+    "lead": "Dein Name und deine Maker-Angaben für diese Demo bleiben in diesem Browser.",
+    "email": "E-Mail",
+    "displayName": "Anzeigename",
+    "maker": "Ich bin eine Makerin",
+    "place": "Ort",
+    "bio": "Bio",
+    "bioEn": "Englisch",
+    "bioDe": "Deutsch",
+    "portrait": "Porträt-URL",
+    "portraitHelp": "Optional. Nutze einen vollständigen http- oder https-Bildlink.",
+    "saved": "Profil gespeichert.",
+    "resetDemo": "Demodaten zurücksetzen",
+    "resetHint": "Stellt den Seed wieder her und löscht die Änderungen in diesem Browser. Danach musst du dich neu anmelden.",
+    "errors": {
+      "displayName": "Gib einen Anzeigenamen ein.",
+      "portrait": "Gib eine vollständige http- oder https-URL ein, oder lass das Feld leer.",
+      "saveFailed": "Das Profil konnte nicht gespeichert werden."
+    }
   }
 }
