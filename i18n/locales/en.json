@@ -73,6 +73,12 @@
     "categories": "Categories",
     "all": "All",
     "empty": "No products match your search.",
+    "notFound": "Product not found",
+    "notFoundDescription": "This listing is not in the catalog.",
+    "back": "Back to products",
+    "inquire": "Inquire",
+    "gallery": "Product images",
+    "image": "Image {n}",
     "category": {
       "Ceramics": "Ceramics",
       "Textiles": "Textiles",

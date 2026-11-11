@@ -73,6 +73,12 @@
     "categories": "Kategorien",
     "all": "Alle",
     "empty": "Keine Produkte passen zu deiner Suche.",
+    "notFound": "Produkt nicht gefunden",
+    "notFoundDescription": "Dieses Angebot ist nicht im Katalog.",
+    "back": "Zurück zu den Produkten",
+    "inquire": "Anfragen",
+    "gallery": "Produktbilder",
+    "image": "Bild {n}",
     "category": {
       "Ceramics": "Keramik",
       "Textiles": "Textilien",
