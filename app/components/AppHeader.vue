@@ -29,18 +29,18 @@ const items = computed<NavigationMenuItem[]>(() => primaryNavigation.map((entry)
   const isAccount = item.path === '/account' && !!user.value
 
   return {
-    label: isAccount
+    'label': isAccount
       ? undefined
       : `${copy.value.links[path]}${item.available ? '' : ` (${copy.value.soon})`}`,
-    avatar: isAccount ? accountAvatar.value : undefined,
+    'avatar': isAccount ? accountAvatar.value : undefined,
     'aria-label': isAccount ? copy.value.links['/account'] : undefined,
-    to: item.available ? localePath(item.path) : undefined,
-    disabled: !item.available,
-    exact: item.path === '/',
-    active: item.available && (item.path === '/'
+    'to': item.available ? localePath(item.path) : undefined,
+    'disabled': !item.available,
+    'exact': item.path === '/',
+    'active': item.available && (item.path === '/'
       ? route.path === localePath('/')
       : route.path === localePath(item.path) || route.path.startsWith(`${localePath(item.path)}/`)),
-    onSelect: () => { open.value = false }
+    'onSelect': () => { open.value = false }
   }
 }))
 </script>
