@@ -8,23 +8,39 @@ const localePath = useLocalePath()
 const open = ref(false)
 const { locale } = useI18n()
 const { user } = useAuth()
+const { profiles } = useMakers()
 const copy = computed(() => layoutCopy[locale.value === 'de' ? 'de' : 'en'])
+
+const accountAvatar = computed(() => {
+  if (!user.value) return undefined
+  const portrait = profiles.value.find(profile => profile.userId === user.value!.id)?.portraitImageUrl
+  return {
+    src: portrait || undefined,
+    alt: user.value.displayName,
+    size: 'sm' as const
+  }
+})
 
 const items = computed<NavigationMenuItem[]>(() => primaryNavigation.map((entry) => {
   const item = entry.path === '/auth' && user.value
     ? { ...entry, path: '/account' }
     : entry
   const path = item.path as keyof typeof copy.value.links
+  const isAccount = item.path === '/account' && !!user.value
 
   return {
-    label: `${copy.value.links[path]}${item.available ? '' : ` (${copy.value.soon})`}`,
-    to: item.available ? localePath(item.path) : undefined,
-    disabled: !item.available,
-    exact: item.path === '/',
-    active: item.available && (item.path === '/'
+    'label': isAccount
+      ? undefined
+      : `${copy.value.links[path]}${item.available ? '' : ` (${copy.value.soon})`}`,
+    'avatar': isAccount ? accountAvatar.value : undefined,
+    'aria-label': isAccount ? copy.value.links['/account'] : undefined,
+    'to': item.available ? localePath(item.path) : undefined,
+    'disabled': !item.available,
+    'exact': item.path === '/',
+    'active': item.available && (item.path === '/'
       ? route.path === localePath('/')
       : route.path === localePath(item.path) || route.path.startsWith(`${localePath(item.path)}/`)),
-    onSelect: () => { open.value = false }
+    'onSelect': () => { open.value = false }
   }
 }))
 </script>

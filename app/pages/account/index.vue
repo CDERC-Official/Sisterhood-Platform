@@ -139,162 +139,160 @@ watch(locale, () => {
 </script>
 
 <template>
-  <UContainer>
-    <div class="mx-auto flex w-full max-w-md flex-col gap-8 py-16">
-      <header class="flex flex-col gap-2">
-        <h1 class="text-2xl font-semibold text-highlighted">
-          {{ t('account.title') }}
-        </h1>
-        <p class="text-muted">
-          {{ t('account.lead') }}
-        </p>
-      </header>
+  <div class="mx-auto flex w-full max-w-md flex-col gap-8">
+    <header class="flex flex-col gap-2">
+      <h1 class="text-2xl font-semibold text-highlighted">
+        {{ t('account.title') }}
+      </h1>
+      <p class="text-muted">
+        {{ t('account.lead') }}
+      </p>
+    </header>
 
-      <UForm
-        v-if="user"
-        :state="state"
-        :validate="validateProfile"
-        :loading-auto="false"
-        novalidate
-        class="flex flex-col gap-4"
-        @submit="onSave"
+    <UForm
+      v-if="user"
+      :state="state"
+      :validate="validateProfile"
+      :loading-auto="false"
+      novalidate
+      class="flex flex-col gap-4"
+      @submit="onSave"
+    >
+      <UAlert
+        v-if="formAlert"
+        :color="formAlert.color"
+        variant="subtle"
+        :icon="formAlert.color === 'success' ? 'i-lucide-circle-check' : 'i-lucide-circle-alert'"
+        role="status"
+        :title="formAlert.title"
+      />
+
+      <UFormField
+        name="email"
+        :label="t('account.email')"
       >
-        <UAlert
-          v-if="formAlert"
-          :color="formAlert.color"
-          variant="subtle"
-          :icon="formAlert.color === 'success' ? 'i-lucide-circle-check' : 'i-lucide-circle-alert'"
-          role="status"
-          :title="formAlert.title"
+        <UInput
+          :model-value="state.email"
+          type="email"
+          readonly
+          autocomplete="email"
+          class="w-full"
         />
+      </UFormField>
 
-        <UFormField
-          name="email"
-          :label="t('account.email')"
-        >
-          <UInput
-            :model-value="state.email"
-            type="email"
-            readonly
-            autocomplete="email"
-            class="w-full"
-          />
-        </UFormField>
-
-        <UFormField
-          name="displayName"
-          :label="t('account.displayName')"
-          required
-        >
-          <UInput
-            v-model="state.displayName"
-            autocomplete="nickname"
-            class="w-full"
-          />
-        </UFormField>
-
-        <UFormField name="isMaker">
-          <UCheckbox
-            v-model="state.isMaker"
-            :label="t('account.maker')"
-            :disabled="user.isMaker"
-          />
-        </UFormField>
-
-        <template v-if="user.isMaker">
-          <UFormField
-            name="place"
-            :label="t('account.place')"
-          >
-            <UInput
-              v-model="state.place"
-              autocomplete="address-level2"
-              class="w-full"
-            />
-          </UFormField>
-
-          <div class="flex flex-col gap-3">
-            <p class="text-sm font-medium text-default">
-              {{ t('account.bio') }}
-            </p>
-            <UTabs
-              v-model="bioLocale"
-              :items="bioTabs"
-              :unmount-on-hide="false"
-              class="w-full"
-              :ui="{ content: 'pt-3' }"
-            >
-              <template #en>
-                <UFormField name="bioEn">
-                  <UTextarea
-                    v-model="state.bioEn"
-                    :rows="4"
-                    class="w-full"
-                  />
-                </UFormField>
-              </template>
-              <template #de>
-                <UFormField name="bioDe">
-                  <UTextarea
-                    v-model="state.bioDe"
-                    :rows="4"
-                    class="w-full"
-                  />
-                </UFormField>
-              </template>
-            </UTabs>
-          </div>
-
-          <UFormField
-            name="portraitImageUrl"
-            :label="t('account.portrait')"
-            :help="t('account.portraitHelp')"
-          >
-            <UInput
-              v-model="state.portraitImageUrl"
-              type="url"
-              inputmode="url"
-              autocomplete="off"
-              class="w-full"
-            />
-          </UFormField>
-        </template>
-
-        <UButton
-          type="submit"
-          class="self-start"
-        >
-          {{ t('actions.save') }}
-        </UButton>
-      </UForm>
-
-      <div
-        v-if="user"
-        class="flex flex-col gap-3 border-t border-default pt-6"
+      <UFormField
+        name="displayName"
+        :label="t('account.displayName')"
+        required
       >
+        <UInput
+          v-model="state.displayName"
+          autocomplete="nickname"
+          class="w-full"
+        />
+      </UFormField>
+
+      <UFormField name="isMaker">
+        <UCheckbox
+          v-model="state.isMaker"
+          :label="t('account.maker')"
+          :disabled="user.isMaker"
+        />
+      </UFormField>
+
+      <template v-if="user.isMaker">
+        <UFormField
+          name="place"
+          :label="t('account.place')"
+        >
+          <UInput
+            v-model="state.place"
+            autocomplete="address-level2"
+            class="w-full"
+          />
+        </UFormField>
+
+        <div class="flex flex-col gap-3">
+          <p class="text-sm font-medium text-default">
+            {{ t('account.bio') }}
+          </p>
+          <UTabs
+            v-model="bioLocale"
+            :items="bioTabs"
+            :unmount-on-hide="false"
+            class="w-full"
+            :ui="{ content: 'pt-3' }"
+          >
+            <template #en>
+              <UFormField name="bioEn">
+                <UTextarea
+                  v-model="state.bioEn"
+                  :rows="4"
+                  class="w-full"
+                />
+              </UFormField>
+            </template>
+            <template #de>
+              <UFormField name="bioDe">
+                <UTextarea
+                  v-model="state.bioDe"
+                  :rows="4"
+                  class="w-full"
+                />
+              </UFormField>
+            </template>
+          </UTabs>
+        </div>
+
+        <UFormField
+          name="portraitImageUrl"
+          :label="t('account.portrait')"
+          :help="t('account.portraitHelp')"
+        >
+          <UInput
+            v-model="state.portraitImageUrl"
+            type="url"
+            inputmode="url"
+            autocomplete="off"
+            class="w-full"
+          />
+        </UFormField>
+      </template>
+
+      <UButton
+        type="submit"
+        class="self-start"
+      >
+        {{ t('actions.save') }}
+      </UButton>
+    </UForm>
+
+    <div
+      v-if="user"
+      class="flex flex-col gap-3 border-t border-default pt-6"
+    >
+      <UButton
+        color="neutral"
+        variant="outline"
+        class="self-start"
+        @click="onLogout"
+      >
+        {{ t('auth.logout') }}
+      </UButton>
+
+      <div class="flex flex-col gap-2">
         <UButton
           color="neutral"
-          variant="outline"
+          variant="ghost"
           class="self-start"
-          @click="onLogout"
+          @click="onResetDemo"
         >
-          {{ t('auth.logout') }}
+          {{ t('account.resetDemo') }}
         </UButton>
-
-        <div class="flex flex-col gap-2">
-          <UButton
-            color="neutral"
-            variant="ghost"
-            class="self-start"
-            @click="onResetDemo"
-          >
-            {{ t('account.resetDemo') }}
-          </UButton>
-          <p class="text-sm text-muted">
-            {{ t('account.resetHint') }}
-          </p>
-        </div>
+        <p class="text-sm text-muted">
+          {{ t('account.resetHint') }}
+        </p>
       </div>
     </div>
-  </UContainer>
+  </div>
 </template>

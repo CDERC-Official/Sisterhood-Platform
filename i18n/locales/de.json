@@ -47,6 +47,18 @@
     "saved": "Profil gespeichert.",
     "resetDemo": "Demodaten zurücksetzen",
     "resetHint": "Stellt den Seed wieder her und löscht die Änderungen in diesem Browser. Danach musst du dich neu anmelden.",
+    "nav": {
+      "label": "Kontobereiche",
+      "profile": "Profil",
+      "inquiries": "Meine Anfragen",
+      "inbox": "Posteingang",
+      "studio": "Studio"
+    },
+    "empty": {
+      "inquiries": "Meine Anfragen sind noch nicht ausgefüllt.",
+      "inbox": "Der Posteingang ist noch nicht ausgefüllt.",
+      "studio": "Das Studio ist noch nicht ausgefüllt."
+    },
     "errors": {
       "displayName": "Gib einen Anzeigenamen ein.",
       "portrait": "Gib eine vollständige http- oder https-URL ein, oder lass das Feld leer.",
