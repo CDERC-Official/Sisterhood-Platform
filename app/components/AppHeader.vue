@@ -7,18 +7,26 @@ const route = useRoute()
 const localePath = useLocalePath()
 const open = ref(false)
 const { locale } = useI18n()
+const { user } = useAuth()
 const copy = computed(() => layoutCopy[locale.value === 'de' ? 'de' : 'en'])
 
-const items = computed<NavigationMenuItem[]>(() => primaryNavigation.map(item => ({
-  label: `${copy.value.links[item.path as keyof typeof copy.value.links]}${item.available ? '' : ` (${copy.value.soon})`}`,
-  to: item.available ? localePath(item.path) : undefined,
-  disabled: !item.available,
-  exact: item.path === '/',
-  active: item.available && (item.path === '/'
-    ? route.path === localePath('/')
-    : route.path === localePath(item.path) || route.path.startsWith(`${localePath(item.path)}/`)),
-  onSelect: () => { open.value = false }
-})))
+const items = computed<NavigationMenuItem[]>(() => primaryNavigation.map((entry) => {
+  const item = entry.path === '/auth' && user.value
+    ? { ...entry, path: '/account' }
+    : entry
+  const path = item.path as keyof typeof copy.value.links
+
+  return {
+    label: `${copy.value.links[path]}${item.available ? '' : ` (${copy.value.soon})`}`,
+    to: item.available ? localePath(item.path) : undefined,
+    disabled: !item.available,
+    exact: item.path === '/',
+    active: item.available && (item.path === '/'
+      ? route.path === localePath('/')
+      : route.path === localePath(item.path) || route.path.startsWith(`${localePath(item.path)}/`)),
+    onSelect: () => { open.value = false }
+  }
+}))
 </script>
 
 <template>

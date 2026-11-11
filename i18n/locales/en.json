@@ -31,5 +31,26 @@
       "invalidAccount": "Email, password, and display name are required.",
       "invalidCredentials": "That email and password do not match."
     }
+  },
+  "account": {
+    "title": "Profile",
+    "lead": "Your name and maker details for this demo stay in this browser.",
+    "email": "Email",
+    "displayName": "Display name",
+    "maker": "I am a maker",
+    "place": "Place",
+    "bio": "Bio",
+    "bioEn": "English",
+    "bioDe": "German",
+    "portrait": "Portrait URL",
+    "portraitHelp": "Optional. Use a full http or https image link.",
+    "saved": "Profile saved.",
+    "resetDemo": "Reset demo data",
+    "resetHint": "Restores the seed and clears this browser’s changes. You will need to sign in again.",
+    "errors": {
+      "displayName": "Enter a display name.",
+      "portrait": "Enter a full http or https URL, or leave this blank.",
+      "saveFailed": "The profile could not be saved."
+    }
   }
 }

@@ -236,17 +236,17 @@ The signed-in user can see who they are and update their profile. Makers can als
 
 **Acceptance criteria**
 
-- [ ] `/account` requires auth.
-- [ ] The page shows email (read-only), display name, and the maker flag.
-- [ ] Display name can be edited and saved. The new name is still there after refresh.
-- [ ] When the user is a maker, the page also edits place, bilingual bio, and portrait URL. Saving updates the maker record used by product pages.
-- [ ] A supporter does not see maker fields. They can turn on “I am a maker”, save, and then see the maker fields.
-- [ ] Turning the maker flag off is not required. Leave the flag one-way for this story so studio products keep an owner.
-- [ ] Validation: display name is required. Portrait, when present, is a URL string. Bio may be empty.
-- [ ] Success and error feedback use Nuxt UI (`UAlert` or a toast if the app already has one).
-- [ ] A log out button on this page clears the session and sends the user to `/auth`.
-- [ ] A “Reset demo data” control calls the store reset from S1.3, then sends the user to `/auth` because the session user may no longer match.
-- [ ] Copy is translated in `en` and `de`.
+- [x] `/account` requires auth.
+- [x] The page shows email (read-only), display name, and the maker flag.
+- [x] Display name can be edited and saved. The new name is still there after refresh.
+- [x] When the user is a maker, the page also edits place, bilingual bio, and portrait URL. Saving updates the maker record used by product pages.
+- [x] A supporter does not see maker fields. They can turn on “I am a maker”, save, and then see the maker fields.
+- [x] Turning the maker flag off is not required. Leave the flag one-way for this story so studio products keep an owner.
+- [x] Validation: display name is required. Portrait, when present, is a URL string. Bio may be empty.
+- [x] Success and error feedback use Nuxt UI (`UAlert` or a toast if the app already has one).
+- [x] A log out button on this page clears the session and sends the user to `/auth`.
+- [x] A “Reset demo data” control calls the store reset from S1.3, then sends the user to `/auth` because the session user may no longer match.
+- [x] Copy is translated in `en` and `de`.
 
 **Notes**
 
