@@ -64,5 +64,24 @@
       "portrait": "Gib eine vollständige http- oder https-URL ein, oder lass das Feld leer.",
       "saveFailed": "Das Profil konnte nicht gespeichert werden."
     }
+  },
+  "products": {
+    "title": "Produkte",
+    "lead": "Durchsuche Angebote von Makerinnen im Demo-Store.",
+    "search": "Suche",
+    "searchPlaceholder": "Nach Titel oder Makerin suchen",
+    "categories": "Kategorien",
+    "all": "Alle",
+    "empty": "Keine Produkte passen zu deiner Suche.",
+    "category": {
+      "Ceramics": "Keramik",
+      "Textiles": "Textilien",
+      "Jewelry": "Schmuck",
+      "Wood": "Holz",
+      "Print & Paper": "Druck & Papier",
+      "Food & Preserve": "Essen & Konserven",
+      "Fiber & Basketry": "Faser & Korbflechterei",
+      "Care & Beauty": "Pflege & Schönheit"
+    }
   }
 }

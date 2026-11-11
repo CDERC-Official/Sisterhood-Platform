@@ -64,5 +64,24 @@
       "portrait": "Enter a full http or https URL, or leave this blank.",
       "saveFailed": "The profile could not be saved."
     }
+  },
+  "products": {
+    "title": "Products",
+    "lead": "Browse listings from makers in the demo store.",
+    "search": "Search",
+    "searchPlaceholder": "Search by title or maker",
+    "categories": "Categories",
+    "all": "All",
+    "empty": "No products match your search.",
+    "category": {
+      "Ceramics": "Ceramics",
+      "Textiles": "Textiles",
+      "Jewelry": "Jewelry",
+      "Wood": "Wood",
+      "Print & Paper": "Print & Paper",
+      "Food & Preserve": "Food & Preserve",
+      "Fiber & Basketry": "Fiber & Basketry",
+      "Care & Beauty": "Care & Beauty"
+    }
   }
 }
