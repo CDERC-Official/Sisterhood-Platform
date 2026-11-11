@@ -399,6 +399,30 @@ describe('inquiries', () => {
     ).length).toBeGreaterThanOrEqual(2)
   })
 
+  it('lets the maker and inquirer reply on the same thread without duplicating it', () => {
+    const state = createSeedState()
+    const thread = state.inquiries[0]
+    const maker = state.users.find(user => user.email === demoMakerEmail)
+    const supporter = state.users.find(user => user.email === demoSupporterEmail)
+    if (!thread || !maker || !supporter) throw new Error('Seed is missing inquiry data')
+
+    const makerReply = appendInquiryMessage(state, thread.id, {
+      authorUserId: maker.id,
+      body: 'I can add the hook this week.'
+    })
+    const inquirerReply = appendInquiryMessage(makerReply.state, thread.id, {
+      authorUserId: supporter.id,
+      body: 'That works for me.'
+    })
+    const stored = inquirerReply.state.inquiries.filter(item => item.id === thread.id)
+
+    expect(makerReply.result?.authorUserId).toBe(maker.id)
+    expect(inquirerReply.result?.authorUserId).toBe(supporter.id)
+    expect(stored).toHaveLength(1)
+    expect(stored[0]?.messages.at(-2)?.body).toBe('I can add the hook this week.')
+    expect(stored[0]?.messages.at(-1)?.body).toBe('That works for me.')
+  })
+
   it('keeps a new inquiry after writing the store snapshot', () => {
     const storage = memoryStorage()
     vi.stubGlobal('localStorage', storage)

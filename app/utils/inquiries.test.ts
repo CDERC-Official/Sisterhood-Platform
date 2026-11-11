@@ -145,4 +145,25 @@ describe('inquiry helpers', () => {
     expect(mine.some(item => item.id === thread.id)).toBe(true)
     expect(findProductForInquiry(products, thread)).toBeUndefined()
   })
+
+  it('shares one seeded thread between maker inbox and my inquiries', () => {
+    const state = createSeedState()
+    const maker = state.users.find(user => user.email === demoMakerEmail)
+    const supporter = state.users.find(user => user.email === demoSupporterEmail)
+    const otherMaker = state.users.find(user =>
+      user.isMaker && user.email !== demoMakerEmail
+    )
+    if (!maker || !supporter || !otherMaker) throw new Error('Seed is missing demo accounts')
+
+    const mine = inquiriesStartedBy(state.inquiries, supporter.id)
+    const inbox = inquiriesForMakerInbox(state.inquiries, maker.id)
+    const otherInbox = inquiriesForMakerInbox(state.inquiries, otherMaker.id)
+    const thread = mine.find(item => item.id === 'inq_lena_brass_collar')
+
+    expect(thread).toBeDefined()
+    expect(inbox.some(item => item.id === thread?.id)).toBe(true)
+    expect(otherInbox.some(item => item.id === thread?.id)).toBe(false)
+    expect(canViewInquiryAsMaker(thread!, otherMaker.id)).toBe(false)
+    expect(canViewInquiryAsInquirer(thread!, maker.id)).toBe(false)
+  })
 })
