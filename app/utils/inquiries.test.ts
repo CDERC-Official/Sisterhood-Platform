@@ -6,6 +6,9 @@ import {
   canViewInquiryAsInquirer,
   canViewInquiryAsMaker,
   displayNameFor,
+  findInquiryById,
+  findProductForInquiry,
+  formatInquiryTime,
   inquiriesForMakerInbox,
   inquiriesStartedBy,
   inquiryActivityAt,
@@ -116,5 +119,30 @@ describe('inquiry helpers', () => {
   it('truncates long message previews', () => {
     expect(messagePreview('Short')).toBe('Short')
     expect(messagePreview('abcdefghij', 6)).toBe('abcde…')
+  })
+
+  it('formats inquiry times and finds records by id', () => {
+    const state = createSeedState()
+    const thread = state.inquiries[0]
+    if (!thread) throw new Error('Seed is missing its inquiry')
+
+    expect(formatInquiryTime(thread.createdAt, 'en')).toMatch(/\d/)
+    expect(formatInquiryTime('not-a-date', 'en')).toBe('')
+    expect(findInquiryById(state.inquiries, thread.id)?.id).toBe(thread.id)
+    expect(findInquiryById(state.inquiries, 'missing')).toBeUndefined()
+    expect(findProductForInquiry(state.products, thread)?.id).toBe(thread.productId)
+  })
+
+  it('keeps a started inquiry in the inquirer list when its product is gone', () => {
+    const state = createSeedState()
+    const supporter = state.users.find(user => user.email === demoSupporterEmail)
+    const thread = state.inquiries[0]
+    if (!supporter || !thread) throw new Error('Seed is missing inquiry data')
+
+    const products = state.products.filter(product => product.id !== thread.productId)
+    const mine = inquiriesStartedBy(state.inquiries, supporter.id)
+
+    expect(mine.some(item => item.id === thread.id)).toBe(true)
+    expect(findProductForInquiry(products, thread)).toBeUndefined()
   })
 })

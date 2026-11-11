@@ -63,6 +63,38 @@
       "displayName": "Gib einen Anzeigenamen ein.",
       "portrait": "Gib eine vollständige http- oder https-URL ein, oder lass das Feld leer.",
       "saveFailed": "Das Profil konnte nicht gespeichert werden."
+    },
+    "inquiries": {
+      "title": "Meine Anfragen",
+      "lead": "Private Threads, die du zu Produkten gestartet hast.",
+      "empty": "Du hast noch keine Anfragen gestartet.",
+      "emptyTitle": "Noch keine Anfragen",
+      "maker": "Makerin",
+      "productUnavailable": "Angebot nicht mehr verfügbar",
+      "open": "Anfrage öffnen",
+      "back": "Zurück zu meinen Anfragen",
+      "notFound": "Anfrage nicht gefunden",
+      "notFoundDescription": "Dieser Thread fehlt, oder er gehört nicht zu dir.",
+      "reply": "Antwort",
+      "replyPlaceholder": "Schreibe eine Antwort",
+      "replyRequired": "Gib eine Antwort ein, bevor du sendest.",
+      "sendReply": "Antwort senden"
+    },
+    "inbox": {
+      "title": "Posteingang",
+      "lead": "Private Anfragen zu deinen Produkten.",
+      "empty": "Bisher hat niemand zu deinen Produkten angefragt.",
+      "emptyTitle": "Posteingang ist leer",
+      "inquirer": "Von",
+      "productUnavailable": "Angebot nicht mehr verfügbar",
+      "open": "Anfrage öffnen",
+      "back": "Zurück zum Posteingang",
+      "notFound": "Anfrage nicht gefunden",
+      "notFoundDescription": "Dieser Thread fehlt, oder er liegt nicht in deinem Posteingang.",
+      "reply": "Antwort",
+      "replyPlaceholder": "Schreibe eine Antwort",
+      "replyRequired": "Gib eine Antwort ein, bevor du sendest.",
+      "sendReply": "Antwort senden"
     }
   },
   "products": {

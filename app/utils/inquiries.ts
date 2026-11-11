@@ -51,3 +51,21 @@ export function messagePreview(body: string, maxLength = 120): string {
   if (trimmed.length <= maxLength) return trimmed
   return `${trimmed.slice(0, Math.max(0, maxLength - 1))}…`
 }
+
+export function formatInquiryTime(iso: string, locale: string): string {
+  const date = new Date(iso)
+  if (Number.isNaN(date.getTime())) return ''
+
+  return new Intl.DateTimeFormat(locale === 'de' ? 'de-AT' : 'en-GB', {
+    dateStyle: 'medium',
+    timeStyle: 'short'
+  }).format(date)
+}
+
+export function findInquiryById(inquiries: Inquiry[], id: string): Inquiry | undefined {
+  return inquiries.find(inquiry => inquiry.id === id)
+}
+
+export function findProductForInquiry(products: Product[], inquiry: Inquiry): Product | undefined {
+  return products.find(product => product.id === inquiry.productId)
+}
