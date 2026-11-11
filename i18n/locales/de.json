@@ -131,6 +131,46 @@
       "Care & Beauty": "Pflege & Schönheit"
     }
   },
+  "community": {
+    "title": "Community",
+    "lead": "Lies Beiträge von Makerinnen und Unterstützerinnen im Demo-Feed.",
+    "filters": "Tags",
+    "all": "Alle",
+    "empty": "Keine Beiträge passen zu diesem Filter.",
+    "replies": "Antworten",
+    "composeTitle": "Mit der Community teilen",
+    "composeLead": "Wähle einen Tag und schreibe einen kurzen Titel und Text.",
+    "fields": {
+      "tag": "Tag",
+      "tagPlaceholder": "Tag wählen",
+      "title": "Titel",
+      "titlePlaceholder": "Worum geht es?",
+      "body": "Text",
+      "bodyPlaceholder": "Teile eine Fertigkeit, Gelegenheit, Geschichte oder Frage."
+    },
+    "publish": "Veröffentlichen",
+    "reply": "Antwort",
+    "replyPlaceholder": "Schreibe eine Antwort",
+    "sendReply": "Antwort senden",
+    "replyRequired": "Gib eine Antwort ein, bevor du sendest.",
+    "deletePostTitle": "Diesen Beitrag löschen?",
+    "deletePostDescription": "Damit verschwinden der Beitrag und alle Antworten darunter.",
+    "deletePostConfirm": "Beitrag löschen",
+    "deleteReplyTitle": "Diese Antwort löschen?",
+    "deleteReplyDescription": "Damit verschwindet nur deine Antwort. Der Beitrag bleibt.",
+    "deleteReplyConfirm": "Antwort löschen",
+    "errors": {
+      "tag": "Wähle einen Tag.",
+      "title": "Gib einen Titel ein.",
+      "body": "Gib einen Text ein."
+    },
+    "tag": {
+      "Skills": "Fertigkeiten",
+      "Opportunities": "Gelegenheiten",
+      "Stories": "Geschichten",
+      "Questions": "Fragen"
+    }
+  },
   "studio": {
     "title": "Studio",
     "lead": "Lege deine Produktangebote für diese Demo an und verwalte sie.",

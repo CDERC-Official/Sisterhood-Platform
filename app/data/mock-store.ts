@@ -400,7 +400,7 @@ export function createCommunityPost(
     replies: []
   }
   return {
-    state: { ...state, communityPosts: [...state.communityPosts, post] },
+    state: { ...state, communityPosts: [post, ...state.communityPosts] },
     result: post
   }
 }
