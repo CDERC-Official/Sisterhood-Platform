@@ -212,12 +212,12 @@ Guests who open a signed-in page are sent to `/auth` and brought back after a su
 
 **Acceptance criteria**
 
-- [ ] `app/middleware/auth.ts` protects `/account` and everything under it.
-- [ ] A guest opening a protected URL is redirected to `/auth?returnTo=<path>`. `returnTo` is a relative path on this site. Other values are ignored and the user lands on `/account`.
-- [ ] After join or log in, the app navigates to `returnTo` when it is present, otherwise to `/account`.
-- [ ] A signed-in user opening `/auth` is sent to `/account`.
-- [ ] The German prefix is preserved (`/de/auth`, `/de/account`).
-- [ ] The middleware reads the same session as `useAuth`.
+- [x] `app/middleware/auth.ts` protects `/account` and everything under it.
+- [x] A guest opening a protected URL is redirected to `/auth?returnTo=<path>`. `returnTo` is a relative path on this site. Other values are ignored and the user lands on `/account`.
+- [x] After join or log in, the app navigates to `returnTo` when it is present, otherwise to `/account`.
+- [x] A signed-in user opening `/auth` is sent to `/account`.
+- [x] The German prefix is preserved (`/de/auth`, `/de/account`).
+- [x] The middleware reads the same session as `useAuth`.
 
 **Notes**
 

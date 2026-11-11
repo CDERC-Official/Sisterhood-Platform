@@ -51,6 +51,8 @@ export function useMockStore() {
 
   return {
     state: computed(() => state.value),
+    hydrated: computed(() => hydrated.value),
+    ensureHydrated,
     commit,
     resetDemoData
   }
