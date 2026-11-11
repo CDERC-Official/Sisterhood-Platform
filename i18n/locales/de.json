@@ -71,6 +71,8 @@
     "search": "Suche",
     "searchPlaceholder": "Nach Titel oder Makerin suchen",
     "categories": "Kategorien",
+    "maker": "Makerin",
+    "country": "Land der Makerin",
     "all": "Alle",
     "empty": "Keine Produkte passen zu deiner Suche.",
     "notFound": "Produkt nicht gefunden",
@@ -88,6 +90,51 @@
       "Food & Preserve": "Essen & Konserven",
       "Fiber & Basketry": "Faser & Korbflechterei",
       "Care & Beauty": "Pflege & Schönheit"
+    }
+  },
+  "studio": {
+    "title": "Studio",
+    "lead": "Lege deine Produktangebote für diese Demo an und verwalte sie.",
+    "empty": "Du hast noch keine Produkte eingestellt.",
+    "create": "Produkt hinzufügen",
+    "edit": "Bearbeiten",
+    "view": "Ansehen",
+    "newTitle": "Neues Produkt",
+    "editTitle": "Produkt bearbeiten",
+    "formLead": "Titel und Beschreibungen kannst du auf Englisch und Deutsch ausfüllen. Der Titel in der aktiven Sprache ist Pflicht.",
+    "notFound": "Produkt nicht gefunden",
+    "notFoundDescription": "Dieses Angebot liegt nicht in deinem Studio.",
+    "back": "Zurück zum Studio",
+    "deleteTitle": "Dieses Produkt löschen?",
+    "deleteDescription": "Damit verschwindet das Angebot vom Marktplatz. Anfrage-Threads bleiben erhalten.",
+    "deleteConfirm": "Produkt löschen",
+    "fields": {
+      "title": "Titel und Beschreibung",
+      "english": "Englisch",
+      "german": "Deutsch",
+      "titleEn": "Titel (Englisch)",
+      "titleDe": "Titel (Deutsch)",
+      "descriptionEn": "Beschreibung (Englisch)",
+      "descriptionDe": "Beschreibung (Deutsch)",
+      "category": "Kategorie",
+      "categoryPlaceholder": "Kategorie wählen",
+      "amount": "Preisbetrag",
+      "amountHelp": "Optional. Leer lassen, wenn kein Preis gelten soll.",
+      "currency": "Währung",
+      "currencyPlaceholder": "Währung wählen",
+      "images": "Bilder",
+      "imagesHelp": "Füge einen oder mehrere http- oder https-Bildlinks hinzu.",
+      "imageUrl": "https://…",
+      "addImage": "Bild-URL hinzufügen",
+      "removeImage": "Bild-URL entfernen"
+    },
+    "errors": {
+      "title": "Gib einen Titel in der aktiven Sprache ein.",
+      "category": "Wähle eine Kategorie.",
+      "images": "Füge mindestens eine Bild-URL hinzu.",
+      "imageUrl": "Gib eine vollständige http- oder https-URL ein.",
+      "amount": "Gib einen positiven Betrag ein.",
+      "priceIncomplete": "Setze Betrag und Währung gemeinsam, oder lass beides leer."
     }
   }
 }
