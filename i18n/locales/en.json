@@ -63,6 +63,38 @@
       "displayName": "Enter a display name.",
       "portrait": "Enter a full http or https URL, or leave this blank.",
       "saveFailed": "The profile could not be saved."
+    },
+    "inquiries": {
+      "title": "My inquiries",
+      "lead": "Private threads you started about products.",
+      "empty": "You have not started any inquiries yet.",
+      "emptyTitle": "No inquiries yet",
+      "maker": "Maker",
+      "productUnavailable": "Listing no longer available",
+      "open": "Open inquiry",
+      "back": "Back to my inquiries",
+      "notFound": "Inquiry not found",
+      "notFoundDescription": "This thread is missing, or it is not one of yours.",
+      "reply": "Reply",
+      "replyPlaceholder": "Write a reply",
+      "replyRequired": "Enter a reply before sending.",
+      "sendReply": "Send reply"
+    },
+    "inbox": {
+      "title": "Inbox",
+      "lead": "Private inquiries about your products.",
+      "empty": "No one has inquired about your products yet.",
+      "emptyTitle": "Inbox is empty",
+      "inquirer": "From",
+      "productUnavailable": "Listing no longer available",
+      "open": "Open inquiry",
+      "back": "Back to inbox",
+      "notFound": "Inquiry not found",
+      "notFoundDescription": "This thread is missing, or it is not in your inbox.",
+      "reply": "Reply",
+      "replyPlaceholder": "Write a reply",
+      "replyRequired": "Enter a reply before sending.",
+      "sendReply": "Send reply"
     }
   },
   "products": {
@@ -79,6 +111,13 @@
     "notFoundDescription": "This listing is not in the catalog.",
     "back": "Back to products",
     "inquire": "Inquire",
+    "inquireTitle": "Ask the maker",
+    "inquireDescription": "Send a short private message about this product.",
+    "inquireMessage": "Message",
+    "inquireMessagePlaceholder": "What would you like to ask?",
+    "inquireSend": "Send inquiry",
+    "inquireRequired": "Enter a message before sending.",
+    "inquireOwn": "You cannot inquire on your own product.",
     "gallery": "Product images",
     "image": "Image {n}",
     "category": {

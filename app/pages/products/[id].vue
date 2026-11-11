@@ -5,8 +5,10 @@ const route = useRoute()
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const { localeText } = useLocaleText()
+const { user } = useAuth()
 const { products } = useProducts()
 const { makers } = useMakers()
+const { createInquiry } = useInquiries()
 
 const productId = computed(() => {
   const id = route.params.id
@@ -22,10 +24,21 @@ const maker = computed(() => {
   return makers.value.find(item => item.user.id === product.value!.makerId) ?? null
 })
 
+const isOwnProduct = computed(() =>
+  !!user.value && !!product.value && user.value.id === product.value.makerId
+)
+
 const selectedImageIndex = ref(0)
+const inquireOpen = ref(false)
+const inquireMessage = ref('')
+const inquireError = ref('')
+const sending = ref(false)
 
 watch(productId, () => {
   selectedImageIndex.value = 0
+  inquireOpen.value = false
+  inquireMessage.value = ''
+  inquireError.value = ''
 })
 
 watch(
@@ -67,6 +80,43 @@ function formatPrice(item: Product) {
 
 function selectImage(index: number) {
   selectedImageIndex.value = index
+}
+
+function onInquireClick() {
+  if (!user.value) {
+    return redirectToAuth(route.fullPath)
+  }
+  if (isOwnProduct.value) return
+  inquireError.value = ''
+  inquireOpen.value = true
+}
+
+function sendInquiry() {
+  const body = inquireMessage.value.trim()
+  if (!body) {
+    inquireError.value = t('products.inquireRequired')
+    return
+  }
+  if (!user.value || !product.value || isOwnProduct.value || sending.value) return
+
+  sending.value = true
+  const inquiry = createInquiry({
+    productId: product.value.id,
+    makerUserId: product.value.makerId,
+    inquirerUserId: user.value.id,
+    body
+  })
+  sending.value = false
+
+  if (!inquiry) {
+    inquireError.value = t('products.inquireRequired')
+    return
+  }
+
+  inquireOpen.value = false
+  inquireMessage.value = ''
+  inquireError.value = ''
+  return navigateTo(localePath(`/account/inquiries/${inquiry.id}`))
 }
 </script>
 
@@ -160,14 +210,68 @@ function selectImage(index: number) {
           {{ localeText(product.description) }}
         </p>
 
-        <div>
+        <div class="flex flex-col gap-2">
+          <template v-if="isOwnProduct">
+            <UButton
+              color="primary"
+              :label="t('products.inquire')"
+              disabled
+            />
+            <p class="text-sm text-muted">
+              {{ t('products.inquireOwn') }}
+            </p>
+          </template>
+
           <UButton
+            v-else
             color="primary"
             :label="t('products.inquire')"
-            disabled
+            @click="onInquireClick"
           />
         </div>
       </div>
     </div>
+
+    <UModal
+      v-model:open="inquireOpen"
+      :title="t('products.inquireTitle')"
+      :description="t('products.inquireDescription')"
+    >
+      <template #body>
+        <div class="flex flex-col gap-3">
+          <UFormField
+            :label="t('products.inquireMessage')"
+            name="inquireMessage"
+            required
+            :error="inquireError || undefined"
+          >
+            <UTextarea
+              v-model="inquireMessage"
+              :placeholder="t('products.inquireMessagePlaceholder')"
+              :rows="4"
+              autoresize
+              @update:model-value="inquireError = ''"
+            />
+          </UFormField>
+        </div>
+      </template>
+
+      <template #footer="{ close }">
+        <div class="flex flex-wrap justify-end gap-2">
+          <UButton
+            color="neutral"
+            variant="outline"
+            :label="t('actions.cancel')"
+            @click="close()"
+          />
+          <UButton
+            color="primary"
+            :label="t('products.inquireSend')"
+            :loading="sending"
+            @click="sendInquiry"
+          />
+        </div>
+      </template>
+    </UModal>
   </UContainer>
 </template>
