@@ -1,4 +1,41 @@
 {
+  "prototype": {
+    "label": "Demo notice",
+    "notice": "Demo prototype: profiles, products and posts are fictional examples. Accounts and messages are simulated only in this browser; no messages are actually sent."
+  },
+  "seo": {
+    "community": "Explore fictional community posts in the Sisterhood prototype: experiences, ideas and questions. Try exchange in a browser-local demo.",
+    "members": "Meet the fictional members of the Sisterhood prototype. Explore example profiles from Kenya and Europe by name and location.",
+    "member": "{name}: a fictional example profile with creative products and community posts in the Sisterhood prototype.",
+    "products": "Discover creative example products and their fictional makers. The Sisterhood catalogue is a demo, not a real shop.",
+    "product": "{name}: an example product in the Sisterhood prototype. Product details and inquiries are part of a browser-local demo.",
+    "auth": "Demo sign-in for the Sisterhood prototype. Accounts are simulated only in this browser; no real user account is created."
+  },
+  "about": {
+    "title": "About us",
+    "description": "The draft Sisterhood vision: connecting women through exchange, creative work and mutual support. A clear explanation of the project idea and demo.",
+    "heading": "Connection begins with what we share.",
+    "intro": "Sisterhood is an idea for a place where women can meet, share experiences and make their creative work visible. This prototype explores what that place could look like.",
+    "draftTitle": "An idea taking shape",
+    "draftText": "This project description is a preliminary draft. Its aims, content and direction still need agreement. The prototype does not document existing services, partnerships or real activities.",
+    "together": "Room for connection",
+    "exchangeTitle": "Share experiences",
+    "exchangeText": "Ask a question, share a thought or discover another perspective: exchange should make the first connection possible.",
+    "craftTitle": "Make creative work visible",
+    "craftText": "Behind a piece of work are people, knowledge and personal journeys. Sisterhood aims to make that connection visible and bring women and their ideas together.",
+    "supportTitle": "Support one another",
+    "supportText": "Sharing knowledge, listening closely and learning from each other: mutual support is the guiding idea behind this vision.",
+    "world": "Think beyond places",
+    "worldText": "The idea has an international outlook. It aims to connect different experiences and perspectives while recognising the differences between places and people.",
+    "visionTitle": "The vision: Graz–New Zealand",
+    "visionText": "Graz and New Zealand are the starting point of the project vision. This is a proposed direction, not evidence of an existing network or shared activities.",
+    "examplesTitle": "The demo: Kenya and Europe",
+    "examplesText": "The existing example profiles and products refer to Kenya and Europe. They are fictional demo content and do not yet represent the proposed Graz–New Zealand connection.",
+    "discoverTitle": "Explore the idea in the prototype",
+    "discoverText": "Find example posts in the community feed. Meet the fictional people and discover their creative work in the member directory.",
+    "community": "Discover the community",
+    "members": "Meet the members"
+  },
   "members": {
   "portraitAlt": "Portrait of {name}",
   "portraitFallback": "No photo available for {name}",

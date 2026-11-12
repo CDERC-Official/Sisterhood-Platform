@@ -1,6 +1,7 @@
 // Homepage copy is separate from the shared feature translations.
 export const homeCopy = {
   de: {
+    seoDescription: 'Sisterhood als Prototyp: Entdecke fiktive Profile, kreative Produkte und Community-Beiträge. Eine vorläufige Vision für Austausch und Unterstützung.',
     title: 'Gemeinsam machen wir mehr möglich.',
     heroMembers: 'Frauen aus unserer Community', heroProducts: 'Aus ihren Werkstätten',
     imageNote: 'KI-generierte Illustration einer fiktiven Werkstattszene.',
@@ -38,6 +39,7 @@ export const homeCopy = {
     tags: { Skills: 'Wissen teilen', Opportunities: 'Gemeinsam aktiv', Stories: 'Geschichten', Questions: 'Fragen' }
   },
   en: {
+    seoDescription: 'Explore the Sisterhood prototype: fictional profiles, creative products and community posts. A draft vision for exchange and mutual support.',
     title: 'Together, we make more possible.',
     heroMembers: 'Women in our community', heroProducts: 'From their workshops',
     imageNote: 'AI-generated illustration of a fictional workshop.',

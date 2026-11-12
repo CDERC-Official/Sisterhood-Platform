@@ -5,6 +5,6 @@ export const primaryNavigation = [
   { label: 'Mitglieder', path: '/members', available: true },
   { label: 'Geschichten', path: '/stories', available: false },
   { label: 'Marktplatz', path: '/products', available: true },
-  { label: 'Über uns', path: '/about', available: false },
+  { label: 'Über uns', path: '/about', available: true },
   { label: 'Anmelden', path: '/auth', available: true }
 ]

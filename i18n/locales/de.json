@@ -1,4 +1,41 @@
 {
+  "prototype": {
+    "label": "Demohinweis",
+    "notice": "Demo-Prototyp: Profile, Produkte und Beiträge sind fiktive Beispiele. Anmeldung und Nachrichten werden nur in diesem Browser simuliert; es erfolgt kein echter Versand."
+  },
+  "seo": {
+    "community": "Fiktive Community-Beiträge im Sisterhood-Prototyp: Erfahrungen, Ideen und Fragen entdecken. Austausch als browserlokale Demo ausprobieren.",
+    "members": "Lerne die fiktiven Mitglieder im Sisterhood-Prototyp kennen. Entdecke Beispielprofile aus Kenia und Europa nach Name und Standort.",
+    "member": "{name}: fiktives Beispielprofil mit kreativen Produkten und Community-Beiträgen im Sisterhood-Prototyp.",
+    "products": "Kreative Beispielprodukte und ihre fiktiven Makerinnen entdecken. Der Sisterhood-Katalog ist eine Demo, kein echter Shop.",
+    "product": "{name}: Beispielprodukt im Sisterhood-Prototyp. Produktinformationen und Anfragen sind Teil einer browserlokalen Demo.",
+    "auth": "Demo-Anmeldung im Sisterhood-Prototyp. Ein Konto wird nur in diesem Browser simuliert; es wird kein echtes Benutzerkonto angelegt."
+  },
+  "about": {
+    "title": "Über uns",
+    "description": "Die vorläufige Sisterhood-Vision: Frauen durch Austausch, kreatives Schaffen und gegenseitige Unterstützung verbinden. Projektentwurf und Demo klar erklärt.",
+    "heading": "Verbindung beginnt mit dem, was wir teilen.",
+    "intro": "Sisterhood ist die Idee eines Ortes, an dem Frauen einander kennenlernen, Erfahrungen teilen und ihr kreatives Schaffen sichtbar machen können. Dieser Prototyp zeigt, wie ein solcher Ort aussehen könnte.",
+    "draftTitle": "Eine Idee im Entstehen",
+    "draftText": "Diese Projektbeschreibung ist ein vorläufiger Entwurf. Ziele, Inhalte und Ausgestaltung sind noch abzustimmen. Der Prototyp dokumentiert keine bestehenden Angebote, Partnerschaften oder realen Aktivitäten.",
+    "together": "Raum für das Miteinander",
+    "exchangeTitle": "Erfahrungen austauschen",
+    "exchangeText": "Eine Frage stellen, einen Gedanken weitergeben oder eine andere Perspektive entdecken: Austausch soll den Anfang einer Verbindung ermöglichen.",
+    "craftTitle": "Kreatives Schaffen zeigen",
+    "craftText": "Hinter einem Werk stehen Menschen, Wissen und persönliche Wege. Sisterhood möchte diese Verbindung sichtbar machen und Frauen mit ihren Ideen zusammenbringen.",
+    "supportTitle": "Einander unterstützen",
+    "supportText": "Wissen teilen, aufmerksam zuhören und voneinander lernen: Gegenseitige Unterstützung ist der Leitgedanke dieser Vision.",
+    "world": "Über Orte hinweg denken",
+    "worldText": "Die Idee ist international ausgerichtet. Sie soll unterschiedliche Lebenswege und Perspektiven verbinden, ohne Unterschiede zwischen Orten und Menschen zu übergehen.",
+    "visionTitle": "Die Vision: Graz–Neuseeland",
+    "visionText": "Graz und Neuseeland bilden den Ausgangspunkt der Projektvision. Das ist eine geplante Ausrichtung, kein Nachweis eines bestehenden Netzwerks oder gemeinsamer Aktivitäten.",
+    "examplesTitle": "Die Demo: Kenia und Europa",
+    "examplesText": "Die vorhandenen Beispielprofile und Produkte beziehen sich auf Kenia und Europa. Sie sind fiktive Demoinhalte und bilden die geplante Verbindung Graz–Neuseeland noch nicht ab.",
+    "discoverTitle": "Entdecke die Idee im Prototyp",
+    "discoverText": "Im Community-Feed findest du Beispielbeiträge. In der Mitgliederübersicht lernst du die fiktiven Personen und ihr kreatives Schaffen kennen.",
+    "community": "Community entdecken",
+    "members": "Mitglieder kennenlernen"
+  },
   "members": {
   "portraitAlt": "Porträt von {name}",
   "portraitFallback": "Kein Foto verfügbar für {name}",

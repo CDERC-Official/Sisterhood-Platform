@@ -25,9 +25,9 @@ const preview = ref({ title: '', subtitle: '', body: '', lang: '' })
 
 useSeoMeta({
   title: () => `Sisterhood – ${copy.value.title}`,
-  description: () => copy.value.intro,
+  description: () => copy.value.seoDescription,
   ogTitle: () => `Sisterhood – ${copy.value.title}`,
-  ogDescription: () => copy.value.intro
+  ogDescription: () => copy.value.seoDescription
 })
 
 function authorName(id: string) {
