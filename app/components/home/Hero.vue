@@ -3,9 +3,10 @@ import type { homeCopy } from '~/data/home-copy'
 
 defineProps<{
   copy: typeof homeCopy.de | typeof homeCopy.en
-  members: { id: string, name: string, place: string }[]
-  products: { id: string, title: string, maker: string, price: string }[]
+  members: { id: string, name: string, place: string, portraitImageUrl: string }[]
+  products: { id: string, title: string, maker: string, price: string, imageSrc?: string }[]
 }>()
+const localePath = useLocalePath()
 </script>
 
 <template>
@@ -36,7 +37,7 @@ defineProps<{
         <div class="mt-8 flex flex-wrap gap-3">
           <UButton
             :label="copy.discover"
-            to="#community"
+            :to="localePath('/community')"
             size="xl"
             class="bg-terracotta text-white hover:bg-terracotta/90"
           />
@@ -62,21 +63,19 @@ defineProps<{
             {{ copy.heroMembers }}
           </h2>
           <div class="mt-5 grid grid-cols-3 gap-3">
-            <a
+            <NuxtLink
               v-for="member in members"
               :key="member.id"
-              href="#community"
+              :to="localePath(`/members/${member.id}`)"
               class="group rounded-md"
             >
-              <div
-                class="flex aspect-square items-center justify-center rounded-lg bg-sage text-3xl font-medium text-forest group-hover:bg-sisterhood-200"
-                aria-hidden="true"
-              >
-                {{ member.name.split(' ').map(part => part[0]).join('') }}
-              </div>
+              <MemberPortrait
+                :src="member.portraitImageUrl"
+                :name="member.name"
+              />
               <p class="mt-2 text-sm font-semibold text-forest">{{ member.name }}</p>
               <p class="mt-1 text-xs text-muted">{{ member.place }}</p>
-            </a>
+            </NuxtLink>
           </div>
         </div>
 
@@ -87,31 +86,22 @@ defineProps<{
           <h2 class="text-xl font-semibold text-forest">
             {{ copy.heroProducts }}
           </h2>
-          <div class="mt-4 grid grid-cols-3 gap-3">
+          <div class="mt-4 grid grid-cols-2 gap-x-4 gap-y-5 sm:grid-cols-3 sm:gap-3">
             <a
               v-for="product in products"
               :key="product.id"
               href="#marketplace"
-              class="group rounded-md"
+              class="group min-w-0 rounded-md"
             >
-              <div
-                class="flex h-16 items-center justify-center rounded-lg bg-rose-quartz text-forest group-hover:bg-porcelain"
-                aria-hidden="true"
-              >
-                <UIcon
-                  name="i-lucide-package"
-                  class="size-7"
-                />
-              </div>
-              <p class="mt-2 text-sm font-medium text-forest">{{ product.title }}</p>
-              <p class="mt-1 text-xs text-muted">{{ product.maker }}</p>
+              <HomeProductImage
+                :src="product.imageSrc"
+                :title="product.title"
+              />
+              <p class="mt-2 text-sm font-medium wrap-anywhere text-forest">{{ product.title }}</p>
+              <p class="mt-1 text-xs wrap-anywhere text-muted">{{ product.maker }}</p>
             </a>
           </div>
         </div>
-
-        <p class="mt-5 text-xs text-muted">
-          {{ copy.portrait }}
-        </p>
       </div>
 
       <p

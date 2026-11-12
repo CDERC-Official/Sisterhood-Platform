@@ -1,4 +1,29 @@
 {
+  "members": {
+  "portraitAlt": "Portrait of {name}",
+  "portraitFallback": "No photo available for {name}",
+  "title": "Meet the members",
+  "lead": "Discover the people behind the craft, their places and what they share.",
+  "search": "Search by name",
+  "location": "Location",
+  "allLocations": "All locations",
+  "count": "{count} members",
+  "noResults": "No members found",
+  "tryAgain": "Try another name or choose a different location.",
+  "reset": "Reset filters",
+  "noLocation": "Location not provided",
+  "noBio": "This member has not added a biography yet.",
+  "viewProfile": "View profile",
+  "back": "All members",
+  "products": "Products",
+  "noProducts": "No products published yet.",
+  "viewProduct": "View product",
+  "posts": "Community posts",
+  "noPosts": "No community posts published yet.",
+  "viewDiscussion": "Open community feed",
+  "notFound": "Member not found",
+  "notFoundDescription": "This profile is not available. Explore the member directory to find someone else."
+},
   "actions": {
     "save": "Save",
     "cancel": "Cancel",
@@ -98,6 +123,7 @@
     }
   },
   "products": {
+    "homeImageFallback": "No product image available: {title}",
     "title": "Products",
     "lead": "Browse listings from makers in the demo store.",
     "search": "Search",

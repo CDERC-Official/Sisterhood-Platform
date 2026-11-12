@@ -1,18 +1,18 @@
 <script setup lang="ts">
-defineProps<{ name: string, place: string, bio: string, action: string, imageLabel: string }>()
-defineEmits<{ preview: [] }>()
+defineProps<{ name: string, place: string, bio: string, action: string, imageSrc?: string, to: string }>()
 </script>
 
 <template>
   <article class="flex h-full flex-col">
-    <HomeImagePlaceholder
-      :initials="name.split(' ').map(part => part[0]).join('')"
-      :label="imageLabel"
-      class="aspect-4/3"
-    />
+    <NuxtLink :to="to">
+      <MemberPortrait
+        :src="imageSrc"
+        :name="name"
+      />
+    </NuxtLink>
     <div class="flex flex-1 flex-col pt-5">
       <h3 class="text-xl font-semibold text-forest">
-        {{ name }}
+        <NuxtLink :to="to">{{ name }}</NuxtLink>
       </h3>
       <p class="mt-1 flex items-center gap-2 text-sm text-muted">
         <UIcon
@@ -29,7 +29,7 @@ defineEmits<{ preview: [] }>()
         <UButton
           :label="action"
           variant="outline"
-          @click="$emit('preview')"
+          :to="to"
         />
       </div>
     </div>

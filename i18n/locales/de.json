@@ -1,4 +1,29 @@
 {
+  "members": {
+  "portraitAlt": "Porträt von {name}",
+  "portraitFallback": "Kein Foto verfügbar für {name}",
+  "title": "Lerne die Mitglieder kennen",
+  "lead": "Entdecke die Menschen hinter dem Handwerk, ihre Orte und das, was sie teilen.",
+  "search": "Nach Namen suchen",
+  "location": "Standort",
+  "allLocations": "Alle Standorte",
+  "count": "{count} Mitglieder",
+  "noResults": "Keine Mitglieder gefunden",
+  "tryAgain": "Versuche einen anderen Namen oder wähle einen anderen Standort.",
+  "reset": "Filter zurücksetzen",
+  "noLocation": "Kein Standort angegeben",
+  "noBio": "Dieses Mitglied hat noch keine Biografie ergänzt.",
+  "viewProfile": "Profil ansehen",
+  "back": "Alle Mitglieder",
+  "products": "Produkte",
+  "noProducts": "Noch keine Produkte veröffentlicht.",
+  "viewProduct": "Produkt ansehen",
+  "posts": "Community-Beiträge",
+  "noPosts": "Noch keine Community-Beiträge veröffentlicht.",
+  "viewDiscussion": "Community-Feed öffnen",
+  "notFound": "Mitglied nicht gefunden",
+  "notFoundDescription": "Dieses Profil ist nicht verfügbar. Entdecke andere Menschen in der Mitgliederübersicht."
+},
   "actions": {
     "save": "Speichern",
     "cancel": "Abbrechen",
@@ -98,6 +123,7 @@
     }
   },
   "products": {
+    "homeImageFallback": "Kein Produktbild verfügbar: {title}",
     "title": "Produkte",
     "lead": "Durchsuche Angebote von Makerinnen im Demo-Store.",
     "search": "Suche",
