@@ -21,9 +21,7 @@ const { t } = useI18n()
 const route = useRoute()
 const { user, register, login } = useAuth()
 
-useHead({
-  title: () => t('auth.title')
-})
+usePublicSeo(() => t('auth.title'), () => t('seo.auth'))
 
 const mode = ref<'join' | 'login'>('join')
 const joinAlert = ref('')

@@ -11,7 +11,10 @@ const { posts } = useCommunity()
 const member = computed(() => members.value.find(item => item.id === route.params.id))
 const memberProducts = computed(() => products.value.filter(item => item.makerId === member.value?.id))
 const memberPosts = computed(() => sortCommunityPostsNewestFirst(posts.value.filter(item => item.authorUserId === member.value?.id)))
-useHead({ title: () => member.value?.displayName ?? t('members.notFound') })
+usePublicSeo(
+  () => member.value?.displayName ?? t('members.notFound'),
+  () => t('seo.member', { name: member.value?.displayName ?? t('members.notFound') })
+)
 </script>
 
 <template>

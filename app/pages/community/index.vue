@@ -20,9 +20,7 @@ const { user } = useAuth()
 const { state } = useMockStore()
 const { posts, createPost, appendReply, deleteOwnPost, deleteOwnReply } = useCommunity()
 
-useHead({
-  title: () => t('community.title')
-})
+usePublicSeo(() => t('community.title'), () => t('seo.community'))
 
 const selectedTag = computed(() => parseCommunityTagQuery(route.query.tag))
 

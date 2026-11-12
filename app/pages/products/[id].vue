@@ -60,9 +60,7 @@ const title = computed(() =>
   product.value ? localeText(product.value.title) : t('products.notFound')
 )
 
-useHead({
-  title: () => title.value
-})
+usePublicSeo(() => title.value, () => t('seo.product', { name: title.value }))
 
 function categoryLabel(category: ProductCategory) {
   return t(`products.category.${category}`)

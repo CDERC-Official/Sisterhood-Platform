@@ -9,7 +9,7 @@ const name = ref('')
 const place = ref('')
 const places = computed(() => [...new Set(members.value.map(member => member.place).filter(Boolean))].sort())
 const filtered = computed(() => filterMembers(members.value, name.value, place.value))
-useHead({ title: () => t('members.title') })
+usePublicSeo(() => t('members.title'), () => t('seo.members'))
 </script>
 
 <template>

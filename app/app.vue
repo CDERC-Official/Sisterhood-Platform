@@ -13,14 +13,7 @@ useHead(() => ({
   }
 }))
 
-const title = 'Sisterhood – Hier beginnt Verbindung'
-const description = 'Sisterhood verbindet Frauen aus Graz und Neuseeland. Eine Community für persönliche Geschichten, kreative Ideen und gegenseitige Unterstützung.'
-
 useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
   twitterCard: 'summary'
 })
 </script>
@@ -30,6 +23,7 @@ useSeoMeta({
     <AppHeader />
 
     <UMain>
+      <AppDemoNotice />
       <NuxtPage />
     </UMain>
 

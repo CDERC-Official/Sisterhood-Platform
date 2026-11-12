@@ -12,9 +12,7 @@ const { localeText } = useLocaleText()
 const { products } = useProducts()
 const { makers } = useMakers()
 
-useHead({
-  title: () => t('products.title')
-})
+usePublicSeo(() => t('products.title'), () => t('seo.products'))
 
 const search = ref('')
 const selectedCategory = ref<CategoryFilter>('all')
