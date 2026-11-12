@@ -3,6 +3,7 @@ import { homeCopy } from '~/data/home-copy'
 import type { CommunityPost, Product } from '#shared/types'
 
 const { locale } = useI18n()
+const localePath = useLocalePath()
 const { localeText } = useLocaleText()
 const copy = computed(() => homeCopy[locale.value === 'de' ? 'de' : 'en'])
 const { makers } = useMakers()
@@ -53,8 +54,8 @@ function price(product: Product) {
   <div>
     <HomeHero
       :copy="copy"
-      :members="featuredMembers.map(member => ({ id: member.user.id, name: member.user.displayName, place: member.profile.place }))"
-      :products="featuredProducts.map(product => ({ id: product.id, title: localeText(product.title), maker: authorName(product.makerId), price: price(product) }))"
+      :members="featuredMembers.map(member => ({ id: member.user.id, name: member.user.displayName, place: member.profile.place, portraitImageUrl: member.profile.portraitImageUrl }))"
+      :products="featuredProducts.map(product => ({ id: product.id, title: localeText(product.title), maker: authorName(product.makerId), price: price(product), imageSrc: product.imageUrls[0] }))"
     />
 
     <section
@@ -146,6 +147,12 @@ function price(product: Product) {
           :title="copy.community"
           :description="copy.communityText"
         />
+        <UButton
+          :to="localePath('/members')"
+          :label="copy.meetMembers"
+          variant="outline"
+          class="mb-8"
+        />
         <div
           v-if="featuredMembers.length"
           class="grid gap-10 md:grid-cols-3 md:gap-6"
@@ -157,8 +164,8 @@ function price(product: Product) {
             :place="member.profile.place"
             :bio="localeText(member.profile.bio)"
             :action="copy.profile"
-            :image-label="copy.portrait"
-            @preview="showPreview(member.user.displayName, member.profile.place, localeText(member.profile.bio))"
+            :image-src="member.profile.portraitImageUrl"
+            :to="localePath(`/members/${member.user.id}`)"
           />
         </div>
         <p
@@ -248,11 +255,9 @@ function price(product: Product) {
             :key="product.id"
             class="flex flex-col"
           >
-            <HomeImagePlaceholder
-              :label="copy.portrait"
-              icon="i-lucide-package"
-              tone="rose"
-              class="aspect-4/3"
+            <HomeProductImage
+              :src="product.imageUrls[0]"
+              :title="localeText(product.title)"
             />
             <p class="mt-5 text-sm text-muted">
               {{ authorName(product.makerId) }}

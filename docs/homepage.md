@@ -24,17 +24,25 @@ The existing i18n routing is preserved: `/` is English, `/de` is German.
 Homepage UI copy supports both. Community posts are English-only in the existing
 types, so they retain their original text and `lang="en"` on German pages.
 
-Until feature pages exist, cards open read-only preview dialogs. These do not
+Member cards now link to `/members/[id]` with the active locale. Product and
+contribution cards still open read-only preview dialogs. These do not
 implement the other developer's routes, sign-in or inquiry flow. Homepage calls
-to action use section anchors, so there are no links to missing detail pages.
+to action open the localized community feed or the same-page `#vision` anchor.
+The member section includes a localized link to the full member directory.
+The vision section retains `scroll-mt-24` to clear the sticky header.
 Replace preview actions with agreed feature routes when those are integrated.
 
 ## Images and regional content
 
-No external images are embedded. Existing seed image hosts were denied by
-the environment proxy (HTTP 403). Clearly labelled image placeholders are used
-for the seeded profiles/products. Replace these with cleared local media when
-available; keep the shared records owned by the data work unchanged.
+Member cards, including the hero cards, load the existing shared portrait URLs.
+The same MemberPortrait component renders square, centered crops on the
+homepage, directory and profile. Missing or failed images fall back to initials
+with a translated accessible label. Photo and name links preserve the locale.
+Product cards and hero previews use `imageUrls[0]`, matching the product catalog
+and initial product detail image. A shared HomeProductImage keeps its fallback
+until the image loads successfully, and retains it on missing or failed images.
+Both sizes use centered 4:3 crops and the localized product title as alt text.
+Shared seed records remain unchanged.
 
 The hero uses `public/images/home/workshop-hero.png`, an original image generated
 with OpenAI image generation for this prototype on 2026-11-10. It is a fictional

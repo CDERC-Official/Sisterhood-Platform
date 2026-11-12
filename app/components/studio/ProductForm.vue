@@ -322,12 +322,13 @@ function onSubmit() {
         :help="t('studio.fields.amountHelp')"
       >
         <UInput
-          v-model="state.amount"
+          :model-value="String(state.amount)"
           type="number"
           inputmode="decimal"
           min="0"
           step="any"
           class="w-full"
+          @update:model-value="state.amount = $event"
         />
       </UFormField>
 
