@@ -3,6 +3,9 @@
  * Active only when runtimeConfig.sitePassword is set (NUXT_SITE_PASSWORD).
  */
 export default defineEventHandler((event) => {
+  // Prerender runs inside Nitro without credentials; skip the gate at build time.
+  if (import.meta.prerender) return
+
   const { sitePassword, sitePasswordUser } = useRuntimeConfig(event)
   if (!sitePassword) return
 
