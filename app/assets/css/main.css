@@ -1,18 +1,75 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
-@theme static {
-  --font-sans: 'Public Sans', sans-serif;
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/manrope/manrope-latin-variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+}
 
-  --color-green-50: #EFFDF5;
-  --color-green-100: #D9FBE8;
-  --color-green-200: #B3F5D1;
-  --color-green-300: #75EDAE;
-  --color-green-400: #00DC82;
-  --color-green-500: #00C16A;
-  --color-green-600: #00A155;
-  --color-green-700: #007F45;
-  --color-green-800: #016538;
-  --color-green-900: #0A5331;
-  --color-green-950: #052E16;
+@theme static {
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+
+  --color-sisterhood-50: #f2f6f3;
+  --color-sisterhood-100: #dce5da;
+  --color-sisterhood-200: #bdcfc0;
+  --color-sisterhood-300: #96b39e;
+  --color-sisterhood-400: #63866e;
+  --color-sisterhood-500: #243f36;
+  --color-sisterhood-600: #20392f;
+  --color-sisterhood-700: #1b3028;
+  --color-sisterhood-800: #172820;
+  --color-sisterhood-900: #122019;
+  --color-sisterhood-950: #0b1510;
+
+  --color-porcelain: #faf8f4;
+  --color-forest: #243f36;
+  --color-sage: #dce5da;
+  --color-terracotta: #a34f3d;
+  --color-rose-quartz: #eedddc;
+  --color-graphite: #292e2b;
+
+  --container-content: 75rem;
+  --container-reading: 42rem;
+  --spacing-section: clamp(3rem, 6vw, 6rem);
+  --spacing-card: clamp(1.25rem, 3vw, 2rem);
+  --radius-card: 1.25rem;
+  --text-body: 1rem;
+  --text-body--line-height: 1.65;
+  --text-lead: 1.125rem;
+  --text-lead--line-height: 1.6;
+  --text-display: clamp(2.5rem, 5vw, 4.5rem);
+  --text-display--line-height: 1.1;
+  --text-display--letter-spacing: -0.025em;
+}
+
+:root {
+  color-scheme: light;
+
+  --ui-primary: var(--color-forest);
+  --ui-text: var(--color-graphite);
+  --ui-text-highlighted: var(--color-forest);
+  --ui-text-muted: var(--color-stone-600);
+  --ui-bg: var(--color-porcelain);
+  --ui-bg-muted: var(--color-sisterhood-50);
+  --ui-bg-elevated: var(--color-sage);
+  --ui-bg-accented: var(--color-sisterhood-200);
+  --ui-bg-inverted: var(--color-forest);
+  --ui-border: var(--color-stone-300);
+  --ui-radius: 0.375rem;
+  --ui-container: var(--container-content);
+}
+
+@layer base {
+  body {
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-forest);
+    outline-offset: 3px;
+  }
 }
