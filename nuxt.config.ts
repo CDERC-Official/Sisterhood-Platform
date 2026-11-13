@@ -12,18 +12,18 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
-  // Site-wide preview gate (HTTP Basic Auth). Empty = off.
-  // Set NUXT_SITE_PASSWORD (and optional NUXT_SITE_PASSWORD_USER) on Vercel.
-  runtimeConfig: {
-    sitePassword: '',
-    sitePasswordUser: 'preview'
-  },
-
   // The first prototype uses the approved light palette only.
   ui: {
     colorMode: false,
     // Font files are self-hosted and declared explicitly in main.css.
     fonts: false
+  },
+
+  // Site-wide preview gate (HTTP Basic Auth). Empty = off.
+  // Set NUXT_SITE_PASSWORD (and optional NUXT_SITE_PASSWORD_USER) on Vercel.
+  runtimeConfig: {
+    sitePassword: '',
+    sitePasswordUser: 'preview'
   },
 
   routeRules: {
