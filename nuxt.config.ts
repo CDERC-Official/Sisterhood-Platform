@@ -26,10 +26,7 @@ export default defineNuxtConfig({
     sitePasswordUser: 'preview'
   },
 
-  routeRules: {
-    '/': { prerender: true }
-  },
-
+  // No prerender: static HTML on Vercel bypasses the site-password middleware.
   compatibilityDate: '2026-06-30',
 
   eslint: {
